@@ -1,0 +1,115 @@
+.newsLetter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background-image: url("/images/newsLetter/bg-newsletter2x.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  @include resize(padding-inline, 67, 16);
+  @include resize(max-height, 344, unset);
+
+  @include res-md {
+    background-image: url("/images/newsLetter/bg-newsletter-mobile.webp");
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    @include max-width(1232);
+  }
+
+  &__textContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include resize(gap, 24, 16);
+    @include resize(padding-block, 48);
+    @include resize(max-width, 751);
+  }
+
+  &__logoContainer {
+    display: flex;
+    flex-direction: column;
+    @include resize(gap, 8);
+
+    @include res-md {
+      align-items: center;
+    }
+  }
+
+  &__imgContainer {
+    width: 100%;
+    aspect-ratio: 121 / 40;
+    @include resize(max-width, 121);
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__titleContainer {
+    @include res-md {
+      text-align: center;
+    }
+  }
+
+  &__title {
+    @include HeadingH2;
+    color: $color-gray-1000;
+    font-weight: 275;
+
+    & strong {
+      display: block;
+      font-weight: 700;
+    }
+  }
+
+  &__formContainer {
+    display: flex;
+    @include resize(gap, 8, 20);
+    @include resize(flex-direction, row, column);
+    // width: 10px;
+    // height: 10px;
+    // background-color: #fff;
+  }
+
+  &__inputText {
+    width: 100%;
+  }
+
+  &__inputEmail {
+    width: 100%;
+  }
+
+  &__btnContainer {
+    @include resize(width, 70%, 100%);
+
+    & .buttonDefault {
+      width: 100%;
+      justify-content: space-between;
+
+      &__text--primary {
+        width: 70%;
+        text-align: center;
+      }
+    }
+  }
+
+  &__imgContent {
+    width: 100%;
+    aspect-ratio: 381 / 292;
+    @include resize(max-width, 381);
+
+    @include res-md {
+      display: none;
+    }
+  }
+}

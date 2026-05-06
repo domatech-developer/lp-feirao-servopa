@@ -1,0 +1,66 @@
+.searchInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0;
+  @include resize(padding-block, 8);
+  @include resize(padding-inline, 16);
+  border: 1px solid $color-gray-700;
+  background: #F8FCFF;
+  @include resize(width, 100%);
+  @include resize(height, 56);
+
+  /* Hover */
+  &:hover {
+    border-color: $color-gray-300;
+  }
+
+  /* Keyboard focus */
+  &:focus-visible {
+    outline: 2px solid $color-primary-200;
+    outline-offset: 2px;
+    border-color: $color-gray-700; // evita conflito com o focus-within
+  }
+
+  /* Mouse focus */
+  &:focus-within {
+    border-color: $color-primary-200;
+    outline: none;
+  }
+
+  &__input {
+    width: 100%;
+    @include Body1;
+    color: $color-gray-100;
+    font-weight: 400;
+    background: #F8FCFF;
+    border: none;
+
+    &:focus {
+      outline: none; // remove foco azul nativo
+    }
+
+    &::placeholder {
+        @include Body1;
+        font-weight: 400;
+        color: $color-gray-300;
+    }
+  }
+
+  &__iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include resize(padding, 4);
+  }
+
+  &__icon {
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0) saturate(100%) invert(8%) sepia(35%) saturate(327%) hue-rotate(8deg)
+            brightness(94%) contrast(95%);
+    @include resize(width, 24);
+    @include resize(height, 24);
+  }
+}

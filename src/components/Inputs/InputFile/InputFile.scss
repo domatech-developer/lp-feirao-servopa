@@ -1,0 +1,82 @@
+.inputFile {
+  display: flex;
+  flex-direction: column;
+
+  /* Esconder input real */
+  &__element {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__label {
+    @include Body1;
+    font-weight: 400;
+    color: $color-gray-100;
+  }
+
+  /* Botão customizado */
+  &__customBtn {
+    display: inline-flex;
+    align-items: center;
+    @include resize(width, 100%);
+    @include resize(height, 56);
+    @include Body1;
+    color: $color-gray-100;
+    border-radius: 4px;
+    font-weight: 400;
+    background: transparent;
+    border: 1px solid $color-gray-800;
+    @include resize(padding, 6);
+    @include resize(padding-inline, 8);
+    cursor: pointer;
+
+    span {
+      @include Body1;
+      font-weight: 400;
+      color: $color-gray-100;
+    }
+
+    &:hover {
+      background: $color-gray-800;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary-200;
+      outline-offset: 2px;
+      border-color: $color-gray-700;
+    }
+  }
+
+  &__icon {
+    @include resize(width, 18);
+    @include resize(height, 18);
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  &__iconContainer {
+    background: red;
+    @include resize(width, 40);
+    @include resize(height, 40);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include resize(padding, 5);
+    @include resize(margin-right, 8);
+  }
+
+  &--invalid &__customBtn {
+    border-color: #e53935;
+    color: #e53935;
+  }
+
+  &__helpText {
+    @include Body1;
+    font-weight: 400;
+    color: #e53935;
+  }
+}

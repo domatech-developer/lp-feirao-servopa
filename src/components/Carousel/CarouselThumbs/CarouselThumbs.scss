@@ -1,0 +1,64 @@
+.carouselThumbs {
+  width: 100%;
+  display: flex;
+  @include resize(gap, 162, 40);
+
+  @include res-md {
+    flex-direction: column;
+  };
+
+  &___viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &___container {
+    display: flex;
+    touch-action: pan-y;
+  }
+
+  &___slide {
+    flex: 0 0 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+  }
+
+  .embla-thumbs {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .embla-thumbs__container {
+    display: flex;
+    flex-direction: column;
+    @include resize(gap, 16, 8);
+    @include resize(padding, 8);
+    @include res-md {
+      flex-direction: row;
+    };
+
+  }
+
+  .embla-thumbs__slide {
+    flex: 0 0 auto;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include res-md {
+      @include resize(width, 100%);
+    };
+  }
+
+}

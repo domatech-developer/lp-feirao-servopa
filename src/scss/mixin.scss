@@ -1,0 +1,366 @@
+// ! exemple : width: dynamic-calc(12, 24, 1366, 1920);
+// ! exemple2 : width: dCalc(12, 24) resolucoes ja definidas entre 1366px para 1920px
+// ! original: width: calc(12px + (24 - 12) * ((100vw - 1366px) / (1920 - 1366)));
+// ! VARIAVEIS DO PROJETO
+
+@use "@/scss/base/responsives.scss" as *;
+
+$font-default: "Avenir Next", sans-serif;
+$font-secondary: "Roboto", sans-serif;
+
+/* Headline/H1 */
+$h1-fs: 3rem; // 48px
+$h1-lh: 3.6rem; // 57.6px
+
+/* Headline/H2 */
+$h2-fs: 2rem; // 32px
+$h2-lh: 2.6rem; // 41.6px
+$h2-ls: -0.64px; // -0.64px
+
+/* Headline/H3 */
+$h3-fs: 1.5rem; // 24px
+$h3-lh: 1.95rem; // 31.2px
+$h3-ls: -48px; //-0.48px
+
+/* Subtítulo/S1 */
+$s1-fs: 1.125rem; // 18px
+$s1-lh: 1.4625rem; // 23.4px
+$s1-ls: 0%;
+
+/* Body/Body 1 */
+$b1-fs: 1rem; // 16px
+$b1-lh: 1.5rem; // 24px
+
+/* Body/Body 2 */
+$b2-fs: 0.875rem; // 14px
+$b2-lh: 1.5rem; // 24px
+
+/* Body/Body 3 */
+$b3-fs: 0.75rem; // 12px
+$b3-lh: 1.25rem; // 20px
+
+$maxResDesktop: 2560;
+$minReDesktop: 1366;
+
+$paddingDesktop: 120;
+
+$proporcionalidade: 0.75; //default 0.72
+
+@function pCalc($startValue) {
+  $value1: calc(#{$startValue} * 1px);
+  @return calc(
+    #{$value1} + ((#{$startValue}/ #{$proporcionalidade}) - #{$startValue}) *
+      ((100vw - calc(#{$minReDesktop} * 1px)) / (#{$maxResDesktop} - #{$minReDesktop}))
+  );
+}
+
+$valid-units: (
+  // Absolute length units
+  "pt",
+  "cm",
+  "mm",
+  "in",
+  "pc",
+  // Relative length units
+  "%",
+  "rem",
+  "em",
+  "ex",
+  "ch",
+  "vw",
+  "dvw",
+  "vh",
+  "dvh",
+  "vmin",
+  "vmax",
+  // CSS Grid unit
+  "fr",
+  // Angle units
+  "deg",
+  "grad",
+  "rad",
+  "turn",
+  // Time units
+  "s",
+  "ms",
+  // Frequency units
+  "Hz",
+  "kHz",
+  // Resolution units
+  "dpi",
+  "dpcm",
+  "dppx",
+  // Generic values
+  "auto",
+  "none",
+  // Global keyword values
+  "inherit",
+  "initial",
+  "unset",
+  // Alignment values for flex and grid
+  "center",
+  "start",
+  "end",
+  "flex-start",
+  "flex-end",
+  "space-between",
+  "space-around",
+  "space-evenly",
+  // Flexbox specific values
+  "baseline",
+  "stretch",
+  // Positional alignment values
+  "left",
+  "right",
+  "top",
+  "bottom",
+  // Display values
+  "block",
+  "inline",
+  "inline-block",
+  "flex",
+  "inline-flex",
+  // Overflow and visibility values
+  "visible",
+  "hidden",
+  "scroll",
+  "clip",
+  // Background properties
+  "cover",
+  "contain",
+  // Border properties
+  "solid",
+  "dashed",
+  "dotted",
+  "double",
+  "groove",
+  "ridge",
+  "inset",
+  "outset",
+  // Text and font properties
+  "normal",
+  "bold",
+  "italic",
+  "underline",
+  "line-through",
+  "overline",
+  // Z-index and positioning properties
+  "relative",
+  "absolute",
+  "fixed",
+  "sticky",
+  // Other common property values
+  "none",
+  "inline",
+  "static",
+  "inherit",
+  "fixed",
+  "absolute",
+  //Flex-direction
+  "row",
+  "row-reverse",
+  "column",
+  "column-reverse"
+);
+
+@mixin resize($prop, $startValue, $finalValue: null) {
+  // Converte o startValue para string para evitar erros
+  $startValueStr: #{$startValue};
+  // Converte o finalValue para string para evitar erros
+  $finalValueStr: #{$finalValue};
+
+  // Verifica se o $startValue contém uma unidade válida
+  $is-start-valid-unit: false;
+  @each $unit in $valid-units {
+    @if str-index($startValueStr, $unit) {
+      $is-start-valid-unit: true;
+    }
+  }
+  // Verifica se o $finalValue contém uma unidade válida
+  $is-final-valid-unit: false;
+  @each $unit in $valid-units {
+    @if str-index($finalValueStr, $unit) {
+      $is-final-valid-unit: true;
+    }
+  }
+  @if $finalValue == null {
+    @if $is-start-valid-unit {
+      // Usa o startValue diretamente se contiver uma unidade válida
+      #{$prop}: $startValue;
+      @include res-md {
+        #{$prop}: $startValue;
+      }
+    } @else {
+      // Usa a lógica da função mpCalc
+      $value2: pCalc($startValue);
+      #{$prop}: $value2;
+      @include res-md {
+        #{$prop}: calc(#{$startValue} * 1px);
+      }
+    }
+  } @else {
+    @if $is-start-valid-unit {
+      #{$prop}: $startValue;
+    } @else {
+      #{$prop}: pCalc($startValue);
+    }
+    @include res-md {
+      @if $is-final-valid-unit {
+        #{$prop}: $finalValue;
+      } @else {
+        #{$prop}: calc(#{$finalValue} * 1px);
+      }
+    }
+  }
+}
+
+@mixin container($type: null) {
+  @if $type == left {
+    padding-left: 0;
+    @include resize(padding-right, 72, 16);
+  } @else if $type == right {
+    padding-right: 0;
+    @include resize(padding-left, 72, 16);
+  } @else if $type == full {
+    padding-left: 0;
+    padding-right: 0;
+  } @else {
+    @include resize(padding-left, 72, 16);
+    @include resize(padding-right, 72, 16);
+  }
+}
+
+
+@mixin max-width($value: null) {
+  @if $value == null {
+    @include resize(max-width, ($minReDesktop - 2 * $paddingDesktop));
+  } @else {
+    @include resize(max-width, $value);
+  }
+}
+
+@mixin lineclamp($number, $direction: null) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: #{$number};
+  @if $direction == null {
+    -webkit-box-orient: vertical;
+  } @else if $direction == "vertical" {
+    -webkit-box-orient: $direction;
+  } @else if $direction == "horizontal" {
+    -webkit-box-orient: $direction;
+  } @else {
+    @error "propriedade direction deve ser vertical ou horizontal";
+  }
+}
+
+@mixin stroke($color: null, $size: null) {
+  color: transparent;
+  -webkit-text-stroke-width: 1.5px;
+  @if $color == null {
+    -webkit-text-stroke-color: $color-black;
+  } @else {
+    -webkit-text-stroke-color: $color;
+  }
+  @if $size == null {
+    -webkit-text-stroke-width: 1.5px;
+    @include res-md {
+      -webkit-text-stroke-width: 1px;
+    }
+  } @else {
+    -webkit-text-stroke-width: $size;
+  }
+}
+
+@mixin content {
+  @content;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  strong {
+    @content;
+  }
+}
+
+@mixin HeadingH1 {
+  font-family: $font-default;
+  letter-spacing: 0.95px;
+
+  @include content {
+    @include resize(font-size, $h1-fs, $h2-fs);
+    @include resize(line-height, $h1-lh, $h2-lh);
+  }
+}
+
+@mixin HeadingH2 {
+  font-family: $font-default;
+  letter-spacing: 0.64px;
+
+  @include content {
+    @include resize(font-size, $h2-fs, $h3-fs);
+    @include resize(line-height, $h2-lh, $h3-lh);
+  }
+}
+
+@mixin HeadingH3 {
+  font-family: $font-default;
+  letter-spacing: 0.48px;
+
+  @include content {
+    @include resize(font-size, $h3-fs, $h3-fs);
+    @include resize(line-height, $h3-lh, $h3-lh);
+  }
+}
+
+@mixin SubtitleSub1 {
+  font-family: $font-default;
+  letter-spacing: 0;
+
+  @include content {
+    @include resize(font-size, $s1-fs, $b1-fs);
+    @include resize(line-height, $s1-lh, $b1-lh);
+  }
+}
+
+@mixin Body1 {
+  font-family: $font-secondary;
+
+  @include content {
+    @include resize(font-size, $b1-fs, $b1-fs);
+    @include resize(line-height, $b1-lh, $b1-lh);
+  }
+}
+
+@mixin Body2 {
+  font-family: $font-secondary;
+  letter-spacing: 0;
+
+  @include content {
+    @include resize(font-size, $b2-fs, $b2-fs);
+    @include resize(line-height, $b2-lh, $b2-lh);
+  }
+}
+
+@mixin Body3 {
+  font-family: $font-secondary;
+  letter-spacing: 0;
+
+  @include content {
+    @include resize(font-size, $b3-fs, $b3-fs);
+    @include resize(line-height, $b3-lh, $b3-lh);
+  }
+}
+
+@mixin Focus {
+  outline: 2px solid #0367ad;
+  outline-offset: 2px;
+  border-radius: 4px;
+  transition: outline-offset 0.15s ease, outline-color 0.2s ease;
+}

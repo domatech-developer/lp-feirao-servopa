@@ -1,0 +1,9 @@
+{
+  "trailingComma": "none",
+  "max-len": 128,
+  "printWidth": 128,
+  "editor.max-len": 128,
+  "editor.printWidth": 128,
+  "prettier.max-len": 128,
+  "prettier.printWidth": 128
+}
