@@ -3,21 +3,10 @@ export async function resolveLocaleFromParams(params: any, { debug = false } = {
 
   // normalizar segs
   const segs = Array.isArray(resolved?.page) ? [...resolved.page] : [];
-
-  // fallback para "/"
-  if (segs.length === 0) {
-    const defaultLocale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE || "pt-br";
-    segs.push(defaultLocale);
-  }
+  const defaultLocale = "pt-br";
 
   const rawSegment = segs[0] || "";
-
-  const validLocales = (process.env.NEXT_PUBLIC_OTHER_LOCALES || "")
-    .split(",")
-    .map((l) => l.trim())
-    .filter(Boolean);
-
-  const locale = validLocales.includes(rawSegment) ? rawSegment : "";
+  const locale = defaultLocale;
 
   if (debug) {
     const debugLog: any = {

@@ -4,7 +4,7 @@ import { useActiveSection } from "@/hooks/useActiveSection";
 import StructureData from "../SEO/StructureData/StructureData";
 import H1Hidden from "../SEO/H1Hidden/H1Hidden";
 
-const MainDefault: FC<{ id: string; children: ReactNode; data: any }> = ({ id, children, data }) => {
+const MainDefault: FC<{ id: string; children: ReactNode; data?: any }> = ({ id, children, data }) => {
   useActiveSection("section", "isElementInitialVisible", "active");
   return (
     <main id={id}>

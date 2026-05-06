@@ -26,7 +26,20 @@ export async function generateStaticUrls({ debug = false } = {}): Promise<{ page
     return validLocales.includes(locale);
   }
 
-  const typesList: any[] = await getTypes();
+  const typesList = await getTypes();
+  if (!typesList || typeof typesList !== "object") {
+    if (debug) {
+      debugLog.endpoints = [];
+      debugLog.fetches.push({
+        locale: "n/a",
+        type: "types",
+        status: "skipped-null-types",
+        pageNum: 0
+      });
+    }
+    return allParams;
+  }
+
   const endpoints = Object.values(typesList)
     .filter((t: any) => !!t.icon)
     .filter((t: any) => t.rest_base !== "media")
