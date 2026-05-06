@@ -12,9 +12,15 @@ const FooterSection = () => {
           <img src={servopaLogo} alt="Grupo Servopa" className="home-footer__logo" />
           <p>Feirão de Verdade é aqui.</p>
           <div className="home-footer__links">
-            <button type="button">Regulamento</button>
-            <button type="button">Política de Privacidade</button>
-            <button type="button">Termos de Uso</button>
+            <button type="button" className="home-pill-btn home-pill-btn--ghost">
+              Regulamento
+            </button>
+            <button type="button" className="home-pill-btn home-pill-btn--ghost">
+              Política de Privacidade
+            </button>
+            <button type="button" className="home-pill-btn home-pill-btn--ghost">
+              Termos de Uso
+            </button>
           </div>
         </div>
 
@@ -28,9 +34,8 @@ const FooterSection = () => {
             Selecione a marca de interesse e, em seguida, escolha a
             concessionária participante mais conveniente para o seu atendimento.
           </p>
-          <button type="button" className="home-footer__cta-button">
+          <button type="button" className="home-pill-btn home-footer__cta-button">
             Escolha sua marca
-            <span>→</span>
           </button>
         </div>
       </div>

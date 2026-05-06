@@ -1,11 +1,8 @@
 export function getFullLocale(locale: string): string {
   switch (locale) {
-    case "en":
-      return "en-US";
-    case "pt":
-      return "pt-BR";
-    // Adicione outros casos conforme necessário
+    case "default":
+      return "default";
     default:
-      return "pt-BR"; // Valor padrão
+      return "default";
   }
 }

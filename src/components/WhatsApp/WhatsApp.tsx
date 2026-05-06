@@ -11,7 +11,7 @@ type WhatsAppProps = {
   locale: Locale;
 } & ComponentProps<"div">;
 
-const WhatsApp: FC<WhatsAppProps> = ({ data, locale = "pt" }) => {
+const WhatsApp: FC<WhatsAppProps> = ({ data, locale = "default" }) => {
   if (!data || !data.section_check) return null;
   const t = whatsAppTranslations[locale as keyof typeof whatsAppTranslations];
   return (

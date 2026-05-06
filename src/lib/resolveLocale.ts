@@ -3,7 +3,7 @@ export async function resolveLocaleFromParams(params: any, { debug = false } = {
 
   // normalizar segs
   const segs = Array.isArray(resolved?.page) ? [...resolved.page] : [];
-  const defaultLocale = "pt-br";
+  const defaultLocale = "default";
 
   const rawSegment = segs[0] || "";
   const locale = defaultLocale;

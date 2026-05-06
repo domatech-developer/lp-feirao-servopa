@@ -1,4 +1,3 @@
-import { ptBR } from "date-fns/locale";
 import { format, parse } from "date-fns";
 
 export function formatDate({
@@ -13,14 +12,14 @@ export function formatDate({
   if (!date) return "";
   try {
     const dateString = new Date(date);
-    if (type === "hour") return format(dateString, "HH:mm", { locale: ptBR });
-    if (type === "dateHour") return format(dateString, "dd'/'MM'/'yyyy - HH:mm", { locale: ptBR });
-    if (type === "date") return format(dateString, "dd'/'MM'/'yyyy", { locale: ptBR });
+    if (type === "hour") return format(dateString, "HH:mm");
+    if (type === "dateHour") return format(dateString, "dd'/'MM'/'yyyy - HH:mm");
+    if (type === "date") return format(dateString, "dd'/'MM'/'yyyy");
     dateString.setHours(dateString.getHours() + utcOffsetHours);
-    if (type === "dateLocal") return format(dateString, "dd'/'MM'/'yyyy", { locale: ptBR });
-    if (type === "longDate") return format(dateString, "PPP", { locale: ptBR });
+    if (type === "dateLocal") return format(dateString, "dd'/'MM'/'yyyy");
+    if (type === "longDate") return format(dateString, "PPP");
     if (type === "api") {
-      const parsedDate = parse(date.toString(), "dd/MM/yyyy", new Date(), { locale: ptBR });
+      const parsedDate = parse(date.toString(), "dd/MM/yyyy", new Date());
       return format(parsedDate, "yyyy-MM-dd");
     }
   } catch (e) {
