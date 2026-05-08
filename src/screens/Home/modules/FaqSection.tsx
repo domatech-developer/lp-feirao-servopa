@@ -14,7 +14,7 @@ const FaqSection = () => {
   return (
     <section className="home-faq">
       <div className="home-faq__left">
-        <h2>Tire suas dúvidas</h2>
+        <h2>TIRE SUAS DÚVIDAS</h2>
         <div className="home-faq__list">
           {questions.map((question, index) => (
             <button key={`${question}-${index}`} type="button" className="home-faq__item">

@@ -6,7 +6,6 @@ Ambiente pré-configurado para inicialização de projeto.
 
 ```bash
 # NEXT_PUBLIC_API_URL=https://hmlg02.jobscreative.com.br/wp-json
-NEXT_PUBLIC_DOMAIN=https://admin.globalteadit.com
 # ! Nunca esqueça a barra no final da url do front-end
 NEXT_PUBLIC_FRONT_END=http://localhost:3000/
 NEXT_PUBLIC_REVALIDATE=20

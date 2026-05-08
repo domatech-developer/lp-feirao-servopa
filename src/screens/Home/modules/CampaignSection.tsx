@@ -20,7 +20,7 @@ const cards = [
     image: cardThree,
   },
   {
-    title: "Grandes marcas entram em campo",
+    title: "Grandes marcas ENTRAM EM CAMPO",
     image: cardFour,
   },
 ];

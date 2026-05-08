@@ -1,6 +1,7 @@
 import "./Home.scss";
 import MainDefault from "@/components/Main/Main";
 import HeroSection from "./modules/HeroSection";
+import HomeStickyBar from "./modules/HomeStickyBar";
 import FooterSection from "@/screens/Home/modules/FooterSection";
 import IntroSection from "@/screens/Home/modules/IntroSection";
 import HighlightSection from "@/screens/Home/modules/HighlightSection";
@@ -12,6 +13,7 @@ import FaqSection from "@/screens/Home/modules/FaqSection";
 const Home = () => {
   return (
     <MainDefault id="home">
+      <HomeStickyBar />
       <HeroSection />
       <IntroSection />
       <HighlightSection />

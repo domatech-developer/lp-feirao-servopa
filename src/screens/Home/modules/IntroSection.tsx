@@ -15,7 +15,7 @@ const IntroSection = () => {
 
       <div className="home-intro__content">
         <img src={introBrandIcon} alt="" className="home-intro__brand-icon" />
-        <h2>Feirão de verdade é aqui</h2>
+        <h2>FEIRÃO DE VERDADE É AQUI</h2>
         <p>
           Nos dias 22 e 23 de maio, o Grupo Servopa reúne grandes marcas,
           condições especiais e uma experiência completa para você sair na
@@ -25,7 +25,7 @@ const IntroSection = () => {
           Escolha sua loja, faça sua inscrição e venha participar do Feirão com
           ofertas, test drive e benefícios exclusivos.
         </p>
-        <button type="button" className="home-pill-btn">
+        <button type="button" className="home-pill-btn home-pill-btn--text-only">
           Quero me inscrever
         </button>
       </div>
