@@ -1,5 +1,6 @@
 import "./Home.scss";
 import MainDefault from "@/components/Main/Main";
+import { FeiraoCountdownProvider } from "./FeiraoCountdownContext";
 import HeroSection from "./modules/HeroSection";
 import HomeStickyBar from "./modules/HomeStickyBar";
 import FooterSection from "@/screens/Home/modules/FooterSection";
@@ -12,18 +13,20 @@ import HistorySection from "@/screens/Home/modules/HistorySection";
 import FaqSection from "@/screens/Home/modules/FaqSection";
 const Home = () => {
   return (
-    <MainDefault id="home">
-      <HomeStickyBar />
-      <HeroSection />
-      <IntroSection />
-      <HighlightSection />
-      <BrandsSection />
-      <CampaignSection />
-      <LegacySection />
-      <HistorySection />
-      <FaqSection />
-      <FooterSection />
-    </MainDefault>
+    <FeiraoCountdownProvider>
+      <MainDefault id="home">
+        <HomeStickyBar />
+        <HeroSection />
+        <IntroSection />
+        <HighlightSection />
+        <BrandsSection />
+        <CampaignSection />
+        <LegacySection />
+        <HistorySection />
+        <FaqSection />
+        <FooterSection />
+      </MainDefault>
+    </FeiraoCountdownProvider>
   );
 };
 
