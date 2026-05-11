@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useFeiraoCountdown } from "../FeiraoCountdownContext";
 
 const SHOW_AFTER_SCROLL_PX = 80;
 const logoServopa = "/images/4673a74e78345a46f5e60b22edfa6d5b975cc62a.svg";
 
 const HomeStickyBar = () => {
   const [visible, setVisible] = useState(false);
+  const { days, hours, minutes, seconds } = useFeiraoCountdown();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,19 +32,19 @@ const HomeStickyBar = () => {
 
         <div className="home-sticky-bar__countdown" aria-live="polite">
           <div>
-            <strong>23</strong>
+            <strong>{days}</strong>
             <span>Dias</span>
           </div>
           <div>
-            <strong>12</strong>
+            <strong>{hours}</strong>
             <span>Horas</span>
           </div>
           <div>
-            <strong>11</strong>
+            <strong>{minutes}</strong>
             <span>Minutos</span>
           </div>
           <div>
-            <strong>12</strong>
+            <strong>{seconds}</strong>
             <span>Segundos</span>
           </div>
         </div>
