@@ -4,8 +4,7 @@ import { FeiraoCountdownProvider } from "./FeiraoCountdownContext";
 import HeroSection from "./modules/HeroSection";
 import HomeStickyBar from "./modules/HomeStickyBar";
 import FooterSection from "@/screens/Home/modules/FooterSection";
-import IntroSection from "@/screens/Home/modules/IntroSection";
-import HighlightSection from "@/screens/Home/modules/HighlightSection";
+import IntroHighlightBridge from "@/screens/Home/modules/IntroHighlightBridge";
 import BrandsSection from "@/screens/Home/modules/BrandsSection";
 import CampaignSection from "@/screens/Home/modules/CampaignSection";
 import LegacySection from "@/screens/Home/modules/LegacySection";
@@ -17,8 +16,7 @@ const Home = () => {
       <MainDefault id="home">
         <HomeStickyBar />
         <HeroSection />
-        <IntroSection />
-        <HighlightSection />
+        <IntroHighlightBridge />
         <BrandsSection />
         <CampaignSection />
         <LegacySection />

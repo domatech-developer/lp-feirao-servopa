@@ -1,15 +1,13 @@
 const introIcon = "/images/bed37c44867b1bb4be2485766a38599cb011b8d6.svg";
-const cardOne = "/images/79e086397ab30419abe85d1b5cfb361448ff4a6c.png";
-const cardOneOverlay = "/images/58178ba06da84e3c03d7404d5732aed710f2fb0f.png";
-const cardTwo = "/images/b1cbf5eef10ed420130b9fc1c7e65508f6d022c0.png";
-const cardThree = "/images/093ae5d894d1f26514eed94b6a2f6f4b949ec680.png";
-const cardFour = "/images/ecd70c4528a4c57718a0877844211beea06f441e.png";
+const cardOne = "/images/232957beec604e92bb1c62f58f090c96-campaign-card-1.png";
+const cardTwo = "/images/9b0c43e692374f39abc1fc1c4fa1a326-campaign-card-2.png";
+const cardThree = "/images/edad10ad4eb046ea837b2e92e710f87c-campaign-card-3.png";
+const cardFour = "/images/fd55dbc487244409801a07ee97a72a30-campaign-card-4.png";
 
 const cards = [
   {
     title: "Test drive com chance de gol",
     image: cardOne,
-    overlay: cardOneOverlay,
   },
   {
     title: "Condições especiais no Feirão",
@@ -49,11 +47,6 @@ const CampaignSection = () => {
           {cards.map((card) => (
             <article key={card.title} className="home-campaign__card">
               <img src={card.image} alt="" className="home-campaign__card-image" />
-              {card.overlay ? (
-                <img src={card.overlay} alt="" className="home-campaign__card-overlay-image" />
-              ) : null}
-              <div className="home-campaign__card-overlay" />
-              <h3>{card.title}</h3>
             </article>
           ))}
         </div>

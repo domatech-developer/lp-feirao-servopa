@@ -42,6 +42,7 @@ type BrandItem = {
 
 const brands = [
   {
+    name: "Volkswagen",
     logo: selectedBrandLogo,
     logoMuted: brandVwMuted,
     shield: "/images/shieldVw.png",
@@ -189,7 +190,7 @@ const BrandsSection = () => {
           <button className="home-brands__nav home-brands__nav--left" type="button" aria-label="Anterior" onClick={onPrev}>
             &#8249;
           </button>
-          <div className="home-brands__shield-card" key={currentBrand.name}>
+          <div className="home-brands__shield-card" key={currentBrand.shield}>
             <img src={currentBrand.shield} alt="" className="home-brands__shield-layer" />
             
 

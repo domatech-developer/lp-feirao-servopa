@@ -30,22 +30,32 @@ const HomeStickyBar = () => {
           <img src={logoServopa} alt="Grupo Servopa" className="home-sticky-bar__servopa-logo" />
         </div>
 
-        <div className="home-sticky-bar__countdown" aria-live="polite">
-          <div>
-            <strong>{days}</strong>
-            <span>Dias</span>
-          </div>
-          <div>
-            <strong>{hours}</strong>
-            <span>Horas</span>
-          </div>
-          <div>
-            <strong>{minutes}</strong>
-            <span>Minutos</span>
-          </div>
-          <div>
-            <strong>{seconds}</strong>
-            <span>Segundos</span>
+        <div
+          className="home-sticky-bar__countdown-card"
+          data-node-id="1239:4401"
+          role="region"
+          aria-labelledby="home-sticky-bar-countdown-label"
+        >
+          <p id="home-sticky-bar-countdown-label" className="home-sticky-bar__countdown-title">
+            Dias para o Feirão Servopa:
+          </p>
+          <div className="home-sticky-bar__countdown-values" aria-live="polite">
+            <div>
+              <strong>{days}</strong>
+              <span>Dias</span>
+            </div>
+            <div>
+              <strong>{hours}</strong>
+              <span>Horas</span>
+            </div>
+            <div>
+              <strong>{minutes}</strong>
+              <span>Minutos</span>
+            </div>
+            <div>
+              <strong>{seconds}</strong>
+              <span>Segundos</span>
+            </div>
           </div>
         </div>
 
