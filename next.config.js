@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   reactStrictMode: false,
   experimental: {
     serverActions: {
@@ -47,12 +48,7 @@ const nextConfig = {
       }
     ];
   },
-  async redirects() {
-    return [
-      { source: "/pt-br", destination: "/", permanent: false },
 
-    ];
-  }
 };
 
 module.exports = nextConfig;
