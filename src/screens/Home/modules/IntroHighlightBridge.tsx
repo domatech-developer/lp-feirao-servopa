@@ -1,5 +1,6 @@
 "use client";
 
+import { useHomeFormModal } from "../HomeFormModalContext";
 import { useSyncedTwinVideos } from "./useSyncedTwinVideos";
 
 const introMaskOverlay = "/images/ef7423ac557df94146f57db8f2d4a23f5e96fdb8.png";
@@ -10,6 +11,7 @@ const highlightHarleyLogo = "/images/harley-davidson-logo.png";
 
 const IntroHighlightBridge = () => {
   const { primaryRef, secondaryRef } = useSyncedTwinVideos();
+  const { openFeiraoFormModal } = useHomeFormModal();
 
   const videoProps = {
     src: highlightVideoSrc,
@@ -49,7 +51,11 @@ const IntroHighlightBridge = () => {
             Escolha sua loja, faça sua inscrição e venha participar do Feirão com ofertas, test drive e
             benefícios exclusivos.
           </p>
-          <button type="button" className="home-pill-btn home-pill-btn--text-only">
+          <button
+            type="button"
+            className="home-pill-btn home-pill-btn--text-only"
+            onClick={() => openFeiraoFormModal()}
+          >
             Quero me inscrever
           </button>
         </div>
@@ -88,7 +94,11 @@ const IntroHighlightBridge = () => {
           <small>
             Promoção válida somente nos dias 22 e 23 de Maio para quem fez cadastro antecipado *.
           </small>
-          <button type="button" className="home-pill-btn home-pill-btn--text-only home-highlight__cta">
+          <button
+            type="button"
+            className="home-pill-btn home-pill-btn--text-only home-highlight__cta"
+            onClick={() => openFeiraoFormModal()}
+          >
             Marcar Test Drive e concorrer!
           </button>
         </div>

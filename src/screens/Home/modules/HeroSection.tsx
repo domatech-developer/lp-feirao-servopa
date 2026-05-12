@@ -2,6 +2,7 @@
 
 import type { CSSProperties } from "react";
 import { useFeiraoCountdown } from "../FeiraoCountdownContext";
+import { useHomeFormModal } from "../HomeFormModalContext";
 
 /** Hashes conferem exports do arquivo Figma (via figma-desktop MCP). */
 const heroBg = "/images/632d51ff85c8ed6c1bdbb0919f75ba3978979823.png";
@@ -21,6 +22,7 @@ const spotlightMaskCss = `url("${heroSpotlightMask}")`;
 
 const HeroSection = () => {
   const { days, hours, minutes, seconds } = useFeiraoCountdown();
+  const { openFeiraoFormModal } = useHomeFormModal();
 
   return (
     <section
@@ -168,7 +170,11 @@ const HeroSection = () => {
             <button type="button" className="home-pill-btn home-pill-btn--hero-link">
               Localização
             </button>
-            <button type="button" className="home-pill-btn home-pill-btn--hero-cta">
+            <button
+              type="button"
+              className="home-pill-btn home-pill-btn--hero-cta"
+              onClick={() => openFeiraoFormModal()}
+            >
               Formulário de Test Drive
             </button>
           </div>

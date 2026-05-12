@@ -1,3 +1,7 @@
+"use client";
+
+import { useHomeFormModal } from "../HomeFormModalContext";
+
 const servopaLogo = "/images/d7b93205623972d4c639db156b36beaaaf717504.svg";
 const footerCardBg = "/images/82ae1ce451dd66d07090abc04aea64d4f90c17eb.png";
 const agencyLogo = "/images/c494d98b8cdc72971d9e18e4a4c1aba1e5bd5e31.svg";
@@ -50,6 +54,8 @@ const FooterCtaFieldCorner = ({ className, gradId }: { className: string; gradId
 );
 
 const FooterSection = () => {
+  const { openFeiraoFormModal } = useHomeFormModal();
+
   return (
     <footer className="home-footer">
       <div className="home-footer__top">
@@ -145,7 +151,7 @@ const FooterSection = () => {
                 Selecione a marca de interesse e, em seguida, escolha a concessionária participante
                 mais conveniente para o seu atendimento.
               </p>
-              <button type="button" className="home-footer__cta-link">
+              <button type="button" className="home-footer__cta-link" onClick={() => openFeiraoFormModal()}>
                 <span>Escolha sua marca</span>
                 <span className="home-footer__cta-arrow" aria-hidden />
               </button>
@@ -186,9 +192,14 @@ const FooterSection = () => {
         <span className="home-footer__copyright">
           © Copyright 2026 - Servopa. Todos os direitos reservados.
         </span>
-        <span className="home-footer__made-by">
+        <a
+          className="home-footer__made-by"
+          href="https://www.domatech.com.br/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Feito por: <img src={agencyLogo} alt="Domatech" />
-        </span>
+        </a>
       </div>
     </footer>
   );

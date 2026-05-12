@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useFeiraoCountdown } from "../FeiraoCountdownContext";
+import { useHomeFormModal } from "../HomeFormModalContext";
 
 const SHOW_AFTER_SCROLL_PX = 80;
 const logoServopa = "/images/4673a74e78345a46f5e60b22edfa6d5b975cc62a.svg";
@@ -9,6 +10,7 @@ const logoServopa = "/images/4673a74e78345a46f5e60b22edfa6d5b975cc62a.svg";
 const HomeStickyBar = () => {
   const [visible, setVisible] = useState(false);
   const { days, hours, minutes, seconds } = useFeiraoCountdown();
+  const { openFeiraoFormModal } = useHomeFormModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +57,11 @@ const HomeStickyBar = () => {
         </div>
 
         <div className="home-sticky-bar__cta">
-          <button type="button" className="home-sticky-bar__test-drive-btn">
+          <button
+            type="button"
+            className="home-sticky-bar__test-drive-btn"
+            onClick={() => openFeiraoFormModal()}
+          >
             Formulário de Test Drive
           </button>
         </div>

@@ -1,3 +1,7 @@
+"use client";
+
+import { useHomeFormModal } from "../HomeFormModalContext";
+
 const introIcon = "/images/bed37c44867b1bb4be2485766a38599cb011b8d6.svg";
 const cardOne = "/images/232957beec604e92bb1c62f58f090c96-campaign-card-1.png";
 const cardTwo = "/images/9b0c43e692374f39abc1fc1c4fa1a326-campaign-card-2.png";
@@ -24,6 +28,8 @@ const cards = [
 ];
 
 const CampaignSection = () => {
+  const { openFeiraoFormModal } = useHomeFormModal();
+
   return (
     <section className="home-campaign">
       <div className="home-campaign__container">
@@ -37,7 +43,7 @@ const CampaignSection = () => {
               ainda pode fazer um test drive para concorrer a uma
               Harley-Davidson.
             </p>
-            <button type="button" className="home-pill-btn">
+            <button type="button" className="home-pill-btn" onClick={() => openFeiraoFormModal()}>
               Quero me inscrever
             </button>
           </div>

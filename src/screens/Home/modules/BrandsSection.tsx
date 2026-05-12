@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useHomeFormModal } from "../HomeFormModalContext";
 
 const selectedBrandLogo = "/images/60a67738f8f949e78b7f2cb8deb87400.png";
 const brandVwMuted = "/images/fb06e28adab84700991e3a659c4860cb.png";
@@ -129,6 +130,7 @@ const toneClassMap: Record<BrandTone, string> = {
 };
 
 const BrandsSection = () => {
+  const { openFeiraoFormModal } = useHomeFormModal();
   const [activeBrand, setActiveBrand] = useState(0);
 
   useEffect(() => {
@@ -198,7 +200,7 @@ const BrandsSection = () => {
           <button className="home-brands__nav home-brands__nav--right" type="button" aria-label="Proximo" onClick={onNext}>
             &#8250;
           </button>
-          <button type="button" className="home-brands__cta">
+          <button type="button" className="home-brands__cta" onClick={() => openFeiraoFormModal()}>
             Encontrar concessionária
           </button>
         </div>
