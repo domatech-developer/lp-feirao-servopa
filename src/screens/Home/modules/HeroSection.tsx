@@ -23,7 +23,11 @@ const HeroSection = () => {
   const { days, hours, minutes, seconds } = useFeiraoCountdown();
 
   return (
-    <section className="home-hero" aria-labelledby="home-hero-countdown-label">
+    <section
+      className="home-hero"
+      aria-labelledby="home-hero-countdown-label"
+      data-node-id="1239:4401"
+    >
       <div className="home-hero__backdrop" aria-hidden="true">
         <div className="home-hero__stage-bound">
           <div className="home-hero__stage" data-node-id="1239:4338">
