@@ -1,7 +1,53 @@
 const servopaLogo = "/images/d7b93205623972d4c639db156b36beaaaf717504.svg";
 const footerCardBg = "/images/82ae1ce451dd66d07090abc04aea64d4f90c17eb.png";
-const checkIcon = "/images/cad3a4311efd27a1b62f55e6e1d00200a3f83d1b.svg";
 const agencyLogo = "/images/c494d98b8cdc72971d9e18e4a4c1aba1e5bd5e31.svg";
+
+const FooterCtaRibbonBadge = () => (
+  <div className="home-footer__cta-badge" aria-hidden>
+    <svg className="home-footer__cta-badge-svg" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="homeFooterCtaBadgeFace" x1="28" y1="6" x2="28" y2="50" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#00c868" />
+          <stop offset="1" stopColor="#00964a" />
+        </linearGradient>
+      </defs>
+      <circle cx="28" cy="28" r="26.5" fill="url(#homeFooterCtaBadgeFace)" stroke="#f6d24a" strokeWidth="2.25" />
+      <path
+        d="M17 28.5l7.2 7.2L39 20.8"
+        fill="none"
+        stroke="#f6d24a"
+        strokeWidth="3.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </div>
+);
+
+const FooterCtaFieldCorner = ({ className, gradId }: { className: string; gradId: string }) => (
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 66 66"
+    width="66"
+    height="66"
+    fill="none"
+    aria-hidden
+  >
+    <defs>
+      <linearGradient id={gradId} x1="8" y1="58" x2="58" y2="8" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#00b55f" stopOpacity="0.55" />
+        <stop offset="1" stopColor="#fb0" stopOpacity="0.35" />
+      </linearGradient>
+    </defs>
+    <path
+      d="M8 58C8 28.8 28.8 8 58 8"
+      stroke={`url(#${gradId})`}
+      strokeWidth="2.25"
+      strokeLinecap="round"
+    />
+  </svg>
+);
 
 const FooterSection = () => {
   return (
@@ -23,22 +69,74 @@ const FooterSection = () => {
           </div>
         </div>
 
-        <div className="home-footer__cta-card">
+        <div className="home-footer__cta-card" data-node-id="1313:23205">
           <div className="home-footer__cta-bg-layer" aria-hidden="true">
             <div className="home-footer__cta-bg-tint" />
             <img src={footerCardBg} alt="" className="home-footer__cta-bg" />
           </div>
 
+          <div className="home-footer__cta-decor" aria-hidden="true">
+            <FooterCtaFieldCorner
+              gradId="homeFooterCtaCornerGrad-tl"
+              className="home-footer__cta-decor-corner home-footer__cta-decor-corner--tl"
+            />
+            <FooterCtaFieldCorner
+              gradId="homeFooterCtaCornerGrad-tr"
+              className="home-footer__cta-decor-corner home-footer__cta-decor-corner--tr"
+            />
+            <FooterCtaFieldCorner
+              gradId="homeFooterCtaCornerGrad-bl"
+              className="home-footer__cta-decor-corner home-footer__cta-decor-corner--bl"
+            />
+            <FooterCtaFieldCorner
+              gradId="homeFooterCtaCornerGrad-br"
+              className="home-footer__cta-decor-corner home-footer__cta-decor-corner--br"
+            />
+            <div className="home-footer__cta-field-silhouette" />
+          </div>
+
           <div className="home-footer__cta-stack">
             <div className="home-footer__cta-ribbon">
-              <div className="home-footer__cta-ribbon-bg" aria-hidden="true" />
+              <div className="home-footer__cta-ribbon-visual" aria-hidden="true">
+                <svg
+                  className="home-footer__cta-ribbon-svg"
+                  viewBox="0 0 658 72"
+                  preserveAspectRatio="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <linearGradient id="homeFooterRibbonFill" x1="329" y1="10" x2="329" y2="62" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#00c45f" />
+                      <stop offset="1" stopColor="#008a46" />
+                    </linearGradient>
+                    <linearGradient id="homeFooterRibbonStroke" x1="0" y1="36" x2="658" y2="36" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#ffe566" />
+                      <stop offset="0.5" stopColor="#f6c316" />
+                      <stop offset="1" stopColor="#e6a800" />
+                    </linearGradient>
+                    <filter id="homeFooterRibbonShadow" x="-6%" y="-30%" width="112%" height="160%">
+                      <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#000" floodOpacity="0.38" />
+                    </filter>
+                  </defs>
+                  <g filter="url(#homeFooterRibbonShadow)">
+                    <polygon
+                      points="0,36 22,5 636,5 658,36 636,67 22,67"
+                      fill="url(#homeFooterRibbonFill)"
+                      stroke="url(#homeFooterRibbonStroke)"
+                      strokeWidth="2.25"
+                      strokeLinejoin="miter"
+                    />
+                  </g>
+                </svg>
+              </div>
               <div className="home-footer__cta-ribbon-row">
-                <div className="home-footer__cta-check">
-                  <img src={checkIcon} alt="" />
+                <div className="home-footer__cta-ribbon-gutter">
+                  <FooterCtaRibbonBadge />
                 </div>
                 <p className="home-footer__cta-ribbon-title">
-                  Escolha sua <span>MARCA</span> e entre em campo no Feirão
+                  Escolha sua marca e entre em campo no feirão
                 </p>
+                <div className="home-footer__cta-ribbon-gutter home-footer__cta-ribbon-gutter--balance" aria-hidden />
               </div>
             </div>
 
