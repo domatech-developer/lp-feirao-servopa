@@ -61,14 +61,33 @@
 }
 
 .home-pill-btn--hero-link {
+  display: inline-flex;
+  padding: 16px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 0 300px 300px 48px;
   border-color: transparent;
-  padding-inline: 12px;
   text-decoration: none;
+  font-family: "Noto Sans", sans-serif;
+  font-feature-settings: "lnum" 1, "pnum" 1;
 }
 
 .home-pill-btn--hero-cta {
-  background: #050914;
-  border-color: rgba(255, 255, 255, 0.92);
+  display: inline-flex;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 0 300px 300px 48px;
+  border: 1.5px solid #0d1424;
+  background: #000614;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  font-feature-settings: "lnum" 1, "pnum" 1;
 }
 
 .home-pill-btn--light {
@@ -437,6 +456,7 @@
 .home-hero__top-logo-image {
   width: 225px;
   height: 40px;
+  aspect-ratio: 45 / 8;
 }
 
 .home-hero__actions {
@@ -447,21 +467,29 @@
 }
 
 .home-hero__countdown-card {
-  max-width: 100%;
+  display: inline-flex;
+  max-width: 321px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 20px 16px;
   background: rgba(0, 6, 20, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  padding: 20px 22px 16px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
 .home-hero__countdown-title {
-  margin: 0 0 14px;
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
   font-size: 14px;
+  font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  color: rgba(255, 255, 255, 0.92);
 }
 
 .home-hero__countdown-values {
@@ -473,25 +501,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 4px;
 }
 
 .home-hero__countdown-values strong {
+  color: var(--Grayscale-1000, #fff);
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
   font-family: "PODIUM Sharp", sans-serif;
   font-variant-numeric: tabular-nums;
   font-size: 32px;
-  font-weight: 700;
   font-style: normal;
+  font-weight: 800;
   line-height: 40px;
-  letter-spacing: -0.02em;
-  color: #fff;
 }
 
 .home-hero__countdown-values span {
-  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
   font-size: 12px;
+  font-style: normal;
   font-weight: 400;
   line-height: 20px;
-  color: rgba(255, 255, 255, 0.6);
 }
 
 @keyframes home-hero-bg-drift {
@@ -763,24 +796,11 @@
   justify-content: space-between;
   gap: 16px;
   box-sizing: border-box;
-  max-width: 1366px;
-  margin: 0 auto;
   width: 100%;
   min-height: 76px;
   padding: 12px 56px;
   border-top: 1px solid #0d1424;
   background: #000614;
-}
-
-.home-sticky-bar__panel::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #0059cc 0%, #0059cc 22%, #0d1424 22%);
-  pointer-events: none;
 }
 
 .home-sticky-bar__brand {
@@ -789,82 +809,84 @@
   gap: 16px;
   flex: 1 1 0;
   min-width: 0;
+  overflow: hidden;
 }
 
 .home-sticky-bar__badge {
+  display: flex;
   flex-shrink: 0;
-  border-left: 8px solid #03c73f;
-  border-radius: 8px;
-  background: linear-gradient(56deg, #ffbb00 2%, #ffcd45 87%);
-  color: #001584;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
   padding: 4px 8px 4px 16px;
-  font-weight: 700;
+  border-radius: 8px;
+  border-left: 8px solid #03c73f;
+  background: linear-gradient(83deg, #fb0 -2%, #ffcd45 87.4%);
+  color: #001584;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: "Noto Sans", sans-serif;
   font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
   line-height: 20px;
   text-transform: uppercase;
 }
 
 .home-sticky-bar__servopa-logo {
-  height: 32px;
-  width: auto;
   display: block;
-}
-
-.home-sticky-bar__countdown-card {
-  display: inline-flex;
-  flex: 1 1 0;
-  max-width: 100%;
   box-sizing: border-box;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  padding: 24px 20px 16px 20px;
-  border-radius: 0 0 8px 8px;
-  border: 1px solid rgba(147, 233, 253, 0);
-  background: rgba(0, 6, 20, 0.6);
-  backdrop-filter: blur(8px);
+  width: 180px;
+  height: 32px;
+  object-fit: contain;
+  object-position: left center;
 }
 
-.home-sticky-bar__countdown-title {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.home-sticky-bar__countdown-values {
+.home-sticky-bar__countdown {
   display: flex;
+  flex: 1 0 0;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 16px;
+  min-width: 0;
   text-align: center;
+  white-space: nowrap;
 }
 
-.home-sticky-bar__countdown-values > div {
+.home-sticky-bar__time-unit {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
-.home-sticky-bar__countdown-values strong {
-  font-family: "PODIUM Sharp", Georgia, "Times New Roman", serif;
-  font-variant-numeric: tabular-nums;
-  font-size: 32px;
-  font-weight: 700;
-  font-style: normal;
-  line-height: 40px;
-  letter-spacing: -0.02em;
+.home-sticky-bar__time-value {
+  margin: 0;
+  box-sizing: border-box;
   color: #fff;
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "PODIUM Sharp", Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 40px;
+  font-variant-numeric: tabular-nums;
 }
 
-.home-sticky-bar__countdown-values span {
-  margin-top: 6px;
+.home-sticky-bar__time-label {
+  margin: 0;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
   font-size: 12px;
+  font-style: normal;
   font-weight: 400;
   line-height: 20px;
-  color: rgba(255, 255, 255, 0.6);
 }
 
 .home-sticky-bar__cta {
@@ -872,6 +894,41 @@
   display: flex;
   justify-content: flex-end;
   min-width: 0;
+}
+
+.home-sticky-bar__test-drive-btn {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 16px 24px;
+  border: 1.5px solid #fff;
+  border-radius: 0 300px 300px 48px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 20px;
+  text-align: center;
+  white-space: nowrap;
+  font-feature-settings: "lnum", "pnum";
+  font-variation-settings: "CTGR" 0, "wdth" 100;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.home-sticky-bar__test-drive-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+.home-sticky-bar__test-drive-btn:focus-visible {
+  outline: 2px solid #61ffd8;
+  outline-offset: 3px;
 }
 
 .home-intro {
@@ -3043,15 +3100,6 @@
 }
 
 @media (max-width: 900px) {
-  .home-hero__countdown-title {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-
-  .home-hero__countdown-values strong {
-    font-size: 28px;
-  }
-
   .home-sticky-bar__panel {
     flex-direction: column;
     align-items: stretch;
@@ -3065,14 +3113,18 @@
     flex: none;
   }
 
-  .home-sticky-bar__countdown-card {
-    flex: none;
-    width: 100%;
-    padding: 20px 16px 14px 16px;
+  .home-sticky-bar__servopa-logo {
+    width: min(180px, 100%);
+    max-width: 100%;
+    height: 32px;
   }
 
-  .home-sticky-bar__countdown-values {
+  .home-sticky-bar__countdown {
+    flex: none;
+    width: 100%;
     gap: 12px;
+    row-gap: 8px;
+    white-space: normal;
   }
 
   .home-sticky-bar__cta {
@@ -3080,9 +3132,17 @@
     flex: none;
   }
 
-  .home-sticky-bar__countdown-values strong {
+  .home-sticky-bar__time-value {
     font-size: 28px;
     line-height: 34px;
+  }
+
+  .home-sticky-bar__test-drive-btn {
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    border-radius: 0 120px 120px 28px;
+    padding: 14px 20px;
   }
 
   .home-hero__center h1 {

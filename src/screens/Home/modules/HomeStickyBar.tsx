@@ -31,36 +31,31 @@ const HomeStickyBar = () => {
         </div>
 
         <div
-          className="home-sticky-bar__countdown-card"
-          data-node-id="1239:4401"
+          className="home-sticky-bar__countdown"
           role="region"
-          aria-labelledby="home-sticky-bar-countdown-label"
+          aria-label="Tempo restante até o Feirão Servopa em dias, horas, minutos e segundos"
+          aria-live="polite"
         >
-          <p id="home-sticky-bar-countdown-label" className="home-sticky-bar__countdown-title">
-            Dias para o Feirão Servopa:
-          </p>
-          <div className="home-sticky-bar__countdown-values" aria-live="polite">
-            <div>
-              <strong>{days}</strong>
-              <span>Dias</span>
-            </div>
-            <div>
-              <strong>{hours}</strong>
-              <span>Horas</span>
-            </div>
-            <div>
-              <strong>{minutes}</strong>
-              <span>Minutos</span>
-            </div>
-            <div>
-              <strong>{seconds}</strong>
-              <span>Segundos</span>
-            </div>
+          <div className="home-sticky-bar__time-unit">
+            <strong className="home-sticky-bar__time-value">{days}</strong>
+            <span className="home-sticky-bar__time-label">Dias</span>
+          </div>
+          <div className="home-sticky-bar__time-unit">
+            <strong className="home-sticky-bar__time-value">{hours}</strong>
+            <span className="home-sticky-bar__time-label">Horas</span>
+          </div>
+          <div className="home-sticky-bar__time-unit">
+            <strong className="home-sticky-bar__time-value">{minutes}</strong>
+            <span className="home-sticky-bar__time-label">Minutos</span>
+          </div>
+          <div className="home-sticky-bar__time-unit">
+            <strong className="home-sticky-bar__time-value">{seconds}</strong>
+            <span className="home-sticky-bar__time-label">Segundos</span>
           </div>
         </div>
 
         <div className="home-sticky-bar__cta">
-          <button type="button" className="home-pill-btn home-pill-btn--text-only">
+          <button type="button" className="home-sticky-bar__test-drive-btn">
             Formulário de Test Drive
           </button>
         </div>
