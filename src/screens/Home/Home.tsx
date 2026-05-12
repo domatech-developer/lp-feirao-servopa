@@ -1,6 +1,10 @@
+"use client";
+
 import "./Home.scss";
 import MainDefault from "@/components/Main/Main";
 import { FeiraoCountdownProvider } from "./FeiraoCountdownContext";
+import { HomeFormModalProvider } from "./HomeFormModalContext";
+import FeiraoFormModal from "./modules/FeiraoFormModal";
 import HeroSection from "./modules/HeroSection";
 import HomeStickyBar from "./modules/HomeStickyBar";
 import FooterSection from "@/screens/Home/modules/FooterSection";
@@ -13,17 +17,20 @@ import FaqSection from "@/screens/Home/modules/FaqSection";
 const Home = () => {
   return (
     <FeiraoCountdownProvider>
-      <MainDefault id="home">
-        <HomeStickyBar />
-        <HeroSection />
-        <IntroHighlightBridge />
-        <BrandsSection />
-        <CampaignSection />
-        <LegacySection />
-        <HistorySection />
-        <FaqSection />
-        <FooterSection />
-      </MainDefault>
+      <HomeFormModalProvider>
+        <MainDefault id="home">
+          <HomeStickyBar />
+          <HeroSection />
+          <IntroHighlightBridge />
+          <BrandsSection />
+          <CampaignSection />
+          <LegacySection />
+          <HistorySection />
+          <FaqSection />
+          <FooterSection />
+        </MainDefault>
+        <FeiraoFormModal />
+      </HomeFormModalProvider>
     </FeiraoCountdownProvider>
   );
 };

@@ -3054,6 +3054,15 @@
   height: 15px;
 }
 
+a.home-footer__made-by {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.home-footer__made-by:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
 @media (max-width: 1200px) {
   .home-hero__shell {
     padding-inline: 24px;
