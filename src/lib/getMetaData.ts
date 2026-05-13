@@ -34,11 +34,11 @@ const getMetaData = async ({ data, page }: MetaDataProps): Promise<Metadata> => 
     metadataBase: new URL(baseUrl),
     icons: {
       icon: [
-        { media: "(prefers-color-scheme: dark)", url: "/icon.png", href: "/icon.png" },
-        { media: "(prefers-color-scheme: light)", url: "/icon.png", href: "/icon.png" }
+        { media: "(prefers-color-scheme: dark)", url: "/icon.svg", href: "/icon.svg", type: "image/svg+xml" },
+        { media: "(prefers-color-scheme: light)", url: "/icon.svg", href: "/icon.svg", type: "image/svg+xml" }
       ]
     },
-    openGraph: { images: [{ url: "/icon.png", width: 180, height: 180, alt: "Domatech" }] },
+    openGraph: { images: [{ url: "/icon.svg", width: 45, height: 40, alt: "Feirão Servopa" }] },
     other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "" }
   };
 
