@@ -3738,6 +3738,20 @@ a.home-footer__made-by:hover {
 }
 
 @media (max-width: 900px) {
+  /* Trava o overflow horizontal global no mobile (evita a "margem branca" à direita
+     causada por elementos com width: 100vw, ribbons rotacionados, etc.) */
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body > main,
+  #home {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
   /* Hero: palco em tela cheia + conteúdo empilhado na base (padrão mobile). */
   .home-hero {
     height: auto;
@@ -3808,7 +3822,13 @@ a.home-footer__made-by:hover {
     padding: 0 24px 28px;
   }
 
-  /* Sticky inferior (mobile): só contagem + CTA em linha — referência layout */
+  /* Sticky inferior (mobile): barra 100% da viewport, altura padrão (≈68px), conteúdo cabendo na linha */
+  .home-sticky-bar {
+    width: 100vw;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+
   .home-sticky-bar__hero-badge {
     display: none;
   }
@@ -3818,10 +3838,14 @@ a.home-footer__made-by:hover {
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     min-height: 68px;
-    padding: 10px max(14px, env(safe-area-inset-left, 0px))
-      max(10px, env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-right, 0px));
+    padding: 10px max(12px, env(safe-area-inset-left, 0px))
+      max(10px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-right, 0px));
+    overflow: hidden;
   }
 
   .home-sticky-bar__brand {
@@ -3829,60 +3853,64 @@ a.home-footer__made-by:hover {
   }
 
   .home-sticky-bar__countdown {
-    flex: 0 1 34%;
+    flex: 0 1 auto;
     width: auto;
+    max-width: 52%;
     min-width: 0;
-    max-width: 38%;
-    justify-content: space-between;
-    gap: 2px;
+    justify-content: flex-start;
+    gap: 6px;
     row-gap: 0;
     white-space: nowrap;
     flex-wrap: nowrap;
+    padding-inline: 0;
+    box-sizing: border-box;
   }
 
   .home-sticky-bar__time-unit {
-    flex: 1 1 0;
+    flex: 0 0 auto;
     min-width: 0;
     gap: 2px;
   }
 
   .home-sticky-bar__cta {
-    flex: 1 1 62%;
+    flex: 1 1 auto;
     min-width: 0;
     justify-content: flex-end;
   }
 
   .home-sticky-bar__time-value {
-    font-size: clamp(20px, 5.2vw, 26px);
+    font-size: clamp(16px, 4.6vw, 20px);
     line-height: 1.05;
   }
 
   .home-sticky-bar__time-label {
     font-size: 10px;
-    line-height: 14px;
-    letter-spacing: 0.01em;
+    line-height: 12px;
+    letter-spacing: 0.02em;
   }
 
   .home-sticky-bar__test-drive-btn {
-    width: 100%;
+    flex-shrink: 1;
+    width: auto;
     max-width: 100%;
+    min-width: 0;
     box-sizing: border-box;
-    white-space: normal;
+    white-space: nowrap;
     text-align: center;
-    hyphens: auto;
-    /* Canto superior esquerdo reto; demais cantos bem arredondados */
-    border-radius: 0 120px 120px 120px;
-    padding: 12px 16px 12px 14px;
-    font-size: clamp(12px, 3.2vw, 14px);
-    line-height: 1.25;
+    hyphens: none;
+    border-radius: 999px;
+    padding: 9px 12px;
+    font-size: clamp(11px, 3vw, 13px);
+    line-height: 1.2;
     font-weight: 500;
+    min-height: 0;
   }
 
-  /* Rodapé — mobile (ref.): links numa linha após o card, texto legal, faixa inferior centrada */
+  /* Rodapé — mobile: respiro p/ a barra fixa + links mais fáceis de tocar */
   .home-footer {
     background: #0a0f1a;
-    padding-top: 40px;
-    padding-bottom: max(96px, calc(88px + env(safe-area-inset-bottom, 0px)));
+    padding-top: 32px;
+    padding-bottom: max(80px, calc(72px + env(safe-area-inset-bottom, 0px)));
   }
 
   .home-footer__top {
@@ -3892,10 +3920,117 @@ a.home-footer__made-by:hover {
   }
 
   .home-footer__links {
-    padding-bottom: 18px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-bottom: 22px;
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     justify-content: center;
+  }
+
+  .home-footer__text-link {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    padding: 12px 14px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.35;
+    font-weight: 500;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.78);
+    border-radius: 10px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .home-footer__text-link:hover,
+  .home-footer__text-link:active {
+    opacity: 1;
+    color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+
+  /* Card CTA do rodapé — compacto no mobile */
+  .home-footer__cta-card {
+    min-height: 0;
+    padding: 36px 16px 18px;
+    border-radius: 14px;
+  }
+
+  .home-footer__cta-stack {
+    gap: 14px;
+  }
+
+  .home-footer__cta-stars-wrap {
+    top: 14px;
+    transform: translateY(-50%);
+  }
+
+  .home-footer__cta-stars {
+    min-height: 44px;
+  }
+
+  .home-footer__cta-star {
+    --home-footer-star-w: 44px;
+    --home-footer-star-h: 42px;
+  }
+
+  .home-footer__cta-star + .home-footer__cta-star {
+    margin-left: -18px;
+  }
+
+  .home-footer__cta-ribbon {
+    min-height: 52px;
+  }
+
+  .home-footer__cta-ribbon-visual,
+  .home-footer__cta-ribbon-svg {
+    height: 52px;
+  }
+
+  .home-footer__cta-ribbon-row {
+    grid-template-columns: 40px minmax(0, 1fr) 40px;
+    min-height: 52px;
+    padding: 2px 0;
+  }
+
+  .home-footer__cta-ribbon-gutter {
+    width: 40px;
+  }
+
+  .home-footer__cta-badge,
+  .home-footer__cta-badge-svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .home-footer__cta-ribbon-title {
+    font-size: 13px;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    padding: 0 2px;
+  }
+
+  .home-footer__cta-copy > p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .home-footer__cta-link {
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 6px;
+  }
+
+  .home-footer__cta-arrow {
+    width: 18px;
+    height: 18px;
+  }
+
+  .home-footer__cta-field-silhouette {
+    width: min(160px, 40%);
+    height: 100%;
   }
 
   .home-footer__legal {
@@ -3919,28 +4054,50 @@ a.home-footer__made-by:hover {
 
   .home-footer__bottom {
     margin-top: 24px;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     width: 100%;
     max-width: none;
     box-sizing: border-box;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 20px max(16px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-bottom, 0px))
+    gap: 12px;
+    padding: 18px max(16px, env(safe-area-inset-left, 0px)) 18px
       max(16px, env(safe-area-inset-right, 0px));
     text-align: center;
     background: #05070a;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .home-footer__copyright,
   .home-footer__made-by {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
     text-align: center;
     justify-content: center;
     white-space: normal;
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .home-footer__copyright {
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .home-footer__made-by {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .home-footer__made-by img {
+    width: 92px;
+    height: auto;
   }
 
   .home-hero__center h1 {
@@ -4678,8 +4835,7 @@ a.home-footer__made-by:hover {
     padding-right: 16px;
   }
 
-  .home-footer__legal,
-  .home-footer__bottom {
+  .home-footer__legal {
     margin-left: 16px;
     margin-right: 16px;
   }
@@ -4730,8 +4886,15 @@ a.home-footer__made-by:hover {
     left: 0;
     right: 0;
     top: 0;
-    padding: max(10px, env(safe-area-inset-top, 0px)) 12px 0;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100vw;
+    padding: max(8px, env(safe-area-inset-top, 0px))
+      max(8px, env(safe-area-inset-right, 0px))
+      0
+      max(8px, env(safe-area-inset-left, 0px));
     pointer-events: none;
+    overflow: hidden;
   }
 
   .home-mobile-header__bar {
@@ -4742,11 +4905,12 @@ a.home-footer__made-by:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    width: min(420px, calc(100% - 24px));
+    gap: 10px;
+    width: 100%;
+    max-width: min(400px, 100%);
     margin-inline: auto;
-    min-height: 52px;
-    padding: 8px 14px 8px 16px;
+    min-height: 48px;
+    padding: 4px 6px 4px 14px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background:
@@ -4758,6 +4922,10 @@ a.home-footer__made-by:hover {
     backdrop-filter: blur(12px);
   }
 
+  .home-mobile-header__bar .buttonHamburguer {
+    flex-shrink: 0;
+  }
+
   .home-mobile-header__brand {
     display: flex;
     align-items: center;
@@ -4767,14 +4935,17 @@ a.home-footer__made-by:hover {
     background: transparent;
     cursor: pointer;
     min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
     text-align: left;
   }
 
   .home-mobile-header__brand img {
     display: block;
-    width: min(148px, 52%);
+    width: auto;
+    max-width: 100%;
     height: auto;
-    max-height: 30px;
+    max-height: 24px;
     object-fit: contain;
     object-position: left center;
   }
