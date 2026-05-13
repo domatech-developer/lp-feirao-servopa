@@ -115,22 +115,11 @@ const FooterSection = () => {
   }, [footerCtaStarsReveal]);
 
   return (
-    <footer className="home-footer">
+    <footer id="feirao-rodape" className="home-footer">
       <div className="home-footer__top">
         <div className="home-footer__brand">
           <img src={servopaLogo} alt="Grupo Servopa" className="home-footer__logo" />
           <p>Feirão de Verdade é aqui.</p>
-          <div className="home-footer__links">
-            <button type="button" className="home-footer__text-link">
-              Regulamento
-            </button>
-            <button type="button" className="home-footer__text-link">
-              Política de Privacidade
-            </button>
-            <button type="button" className="home-footer__text-link">
-              Termos de Uso
-            </button>
-          </div>
         </div>
 
         <div
@@ -209,6 +198,18 @@ const FooterSection = () => {
             </div>
           </div>
         </div>
+
+        <nav className="home-footer__links" aria-label="Links do rodapé">
+          <button type="button" className="home-footer__text-link">
+            Regulamento
+          </button>
+          <button type="button" className="home-footer__text-link">
+            Política de Privacidade
+          </button>
+          <button type="button" className="home-footer__text-link">
+            Termos de Uso
+          </button>
+        </nav>
       </div>
 
       <div className="home-footer__legal">

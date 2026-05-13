@@ -9,14 +9,25 @@ type ButtonHamburguerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 const ButtonHamburguer: FC<ButtonHamburguerProps> = ({ open, onClick, ...props }) => {
   return (
     <button
-      className={`buttonHamburguer ${open && "active"}`}
+      type="button"
+      className={`buttonHamburguer${open ? " active" : ""}`}
       title={open ? "Fechar menu" : "Abrir menu"}
       onClick={(e) => onClick(e)}
       {...props}
     >
-      <div className={`buttonHamburguer__lineTop ${open && "buttonHamburguer__lineTop--open"}`} />
-      <div className={`buttonHamburguer__lineMiddle ${open && "buttonHamburguer__lineMiddle--open"}`} />
-      <div className={`buttonHamburguer__lineBottom ${open && "buttonHamburguer__lineBottom--open"}`} />
+      {/* <span>: fluxo permitido dentro de <button>; <div> invalida o HTML e pode quebrar hidratação (ex.: Safari). */}
+      <span
+        className={`buttonHamburguer__lineTop${open ? " buttonHamburguer__lineTop--open" : ""}`}
+        aria-hidden
+      />
+      <span
+        className={`buttonHamburguer__lineMiddle${open ? " buttonHamburguer__lineMiddle--open" : ""}`}
+        aria-hidden
+      />
+      <span
+        className={`buttonHamburguer__lineBottom${open ? " buttonHamburguer__lineBottom--open" : ""}`}
+        aria-hidden
+      />
     </button>
   );
 };

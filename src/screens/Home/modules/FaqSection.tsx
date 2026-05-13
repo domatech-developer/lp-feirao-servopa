@@ -116,7 +116,7 @@ const FaqSection = () => {
   };
 
   return (
-    <section className="home-faq" aria-labelledby={`${baseId}-heading`}>
+    <section id="feirao-faq" className="home-faq" aria-labelledby={`${baseId}-heading`}>
       <div className="home-faq__left">
         <h2 id={`${baseId}-heading`}>Tire suas dúvidas</h2>
         <div className="home-faq__list">

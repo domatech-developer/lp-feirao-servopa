@@ -151,7 +151,7 @@ const BrandsSection = () => {
   };
 
   return (
-    <section className="home-brands">
+    <section id="feirao-marcas" className="home-brands">
       <div className="home-brands__top">
         <div className="home-brands__left">
           <h2>Grandes marcas reunidas em um só Feirão</h2>
@@ -201,7 +201,10 @@ const BrandsSection = () => {
             &#8250;
           </button>
           <button type="button" className="home-brands__cta" onClick={() => openFeiraoFormModal()}>
-            Encontrar concessionária
+            <span>Encontrar concessionária</span>
+            <span className="home-brands__cta-arrow" aria-hidden>
+              →
+            </span>
           </button>
         </div>
       </div>

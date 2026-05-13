@@ -7,6 +7,7 @@ import { HomeFormModalProvider } from "./HomeFormModalContext";
 import FeiraoFormModal from "./modules/FeiraoFormModal";
 import HeroSection from "./modules/HeroSection";
 import HomeStickyBar from "./modules/HomeStickyBar";
+import HomeMobileFloatingHeader from "./modules/HomeMobileFloatingHeader";
 import FooterSection from "@/screens/Home/modules/FooterSection";
 import IntroHighlightBridge from "@/screens/Home/modules/IntroHighlightBridge";
 import BrandsSection from "@/screens/Home/modules/BrandsSection";
@@ -19,6 +20,7 @@ const Home = () => {
     <FeiraoCountdownProvider>
       <HomeFormModalProvider>
         <MainDefault id="home">
+          <HomeMobileFloatingHeader />
           <HomeStickyBar />
           <HeroSection />
           <IntroHighlightBridge />

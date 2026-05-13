@@ -33,10 +33,22 @@ const CampaignSection = () => {
   return (
     <section className="home-campaign">
       <div className="home-campaign__container">
+        <div className="home-campaign__mosaic">
+          <div className="home-campaign__cards">
+            {cards.map((card) => (
+              <article key={card.title} className="home-campaign__card">
+                <img src={card.image} alt="" className="home-campaign__card-image" />
+              </article>
+            ))}
+          </div>
+        </div>
+
         <aside className="home-campaign__left">
           <div className="home-campaign__left-box">
-            <img src={introIcon} alt="" className="home-campaign__icon" />
-            <h2>Entre em campo para escolher seu próximo veículo</h2>
+            <div className="home-campaign__left-overlap">
+              <img src={introIcon} alt="" className="home-campaign__icon" />
+              <h2>Entre em campo para escolher seu próximo veículo</h2>
+            </div>
             <p>
               Durante o Feirão de Verdade, você encontra marcas participantes do
               Grupo Servopa, condições especiais, atendimento especializado e
@@ -48,14 +60,6 @@ const CampaignSection = () => {
             </button>
           </div>
         </aside>
-
-        <div className="home-campaign__cards">
-          {cards.map((card) => (
-            <article key={card.title} className="home-campaign__card">
-              <img src={card.image} alt="" className="home-campaign__card-image" />
-            </article>
-          ))}
-        </div>
       </div>
     </section>
   );

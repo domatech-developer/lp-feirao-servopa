@@ -54,11 +54,11 @@ const HomeStickyBar = () => {
           </div>
           <div className="home-sticky-bar__time-unit">
             <strong className="home-sticky-bar__time-value">{minutes}</strong>
-            <span className="home-sticky-bar__time-label">Minutos</span>
+            <span className="home-sticky-bar__time-label">Min</span>
           </div>
           <div className="home-sticky-bar__time-unit">
             <strong className="home-sticky-bar__time-value">{seconds}</strong>
-            <span className="home-sticky-bar__time-label">Segundos</span>
+            <span className="home-sticky-bar__time-label">Seg</span>
           </div>
         </div>
 

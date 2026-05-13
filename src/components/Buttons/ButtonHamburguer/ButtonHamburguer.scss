@@ -12,6 +12,7 @@
     &__lineMiddle,
     &__lineBottom,
     &__lineTop {
+        display: block;
         position: absolute;
         background-color: $color-white;
         @include resize(height, 2);
