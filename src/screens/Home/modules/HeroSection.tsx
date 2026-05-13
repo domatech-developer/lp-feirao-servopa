@@ -15,7 +15,6 @@ const heroEllipseL = "/images/a88f7e659f0c93b47be26fc0417d6a6783034307.svg";
 const heroEllipseR = "/images/41149f21a97812159c4a97f400a27feccc7bf415.svg";
 const heroBall = "/images/e2844ba54253a1472bfd421b9191a63d0b6809cb.png";
 
-const heroBadge = "/images/1bfa78d186eb2753576470238f528a052d0138d4.png";
 const logoServopa = "/images/4673a74e78345a46f5e60b22edfa6d5b975cc62a.svg";
 
 const spotlightMaskCss = `url("${heroSpotlightMask}")`;
@@ -180,8 +179,6 @@ const HeroSection = () => {
           </div>
         </header>
       </div>
-
-      <img src={heroBadge} alt="Fazendo um test drive" className="home-hero__badge" />
     </section>
   );
 };
