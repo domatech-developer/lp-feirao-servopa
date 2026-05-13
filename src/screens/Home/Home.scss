@@ -3,7 +3,6 @@
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  overflow-x: hidden;
   background: #000614;
   color: #fff;
   --Grayscale-1000: #fff;
@@ -13,7 +12,23 @@
   position: relative;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+}
+
+/* Primary Harley column (vídeo + faixa moto): entre intro e highlight no fluxo; no desktop sobrepõe a junção. */
+.home-intro-highlight__bridge-video {
+  position: relative;
+  z-index: 4;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+
+  > .home-highlight__left {
+    pointer-events: auto;
+    position: absolute;
+    left: 55px;
+    top: -261px;
+  }
 }
 
 .home-pill-btn {
@@ -1129,25 +1144,29 @@
 }
 
 .home-highlight__left {
-  position: absolute;
-  left: 55px;
-  top: -261px;
   z-index: 3;
   width: 540px;
   height: 880px;
   border-radius: 24px;
-  overflow: hidden;
+  /* Permite a moto ultrapassar o topo da faixa inferior (como no layout Figma / print). */
+  overflow: visible;
+}
+
+.home-intro-highlight__bridge-video > .home-highlight__left {
+  position: absolute;
+  left: 55px;
+  top: -261px;
 }
 
 .home-highlight__video {
   position: relative;
   width: 540px;
   height: 880px;
-  border-radius: 24px 24px 0 0;
+  border-radius: 24px;
+  overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75)),
-    url("/images/0aeb11314a47ed4a41eda012b3186bf1e1003f96.png")
-      center/cover no-repeat;
+    linear-gradient(180deg, rgba(0, 6, 20, 0) 77.76%, #000614 94.43%),
+    #d9d9d9;
 }
 
 .home-highlight__video-crop {
@@ -1183,27 +1202,45 @@
 }
 
 .home-highlight__motorcycle-card {
+  box-sizing: border-box;
   position: absolute;
   left: 0;
-  right: 0;
   bottom: 0;
+  z-index: 2;
   display: flex;
-  align-items: flex-end;
-  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 540px;
+  height: 142px;
+  padding: 10px 18px 10px 8px;
   border-radius: 0 0 24px 24px;
-  padding: 14px 20px 13px;
-  background: linear-gradient(17deg, rgba(0, 6, 20, 0.85) 24%, rgba(0, 6, 20, 0.2) 70%);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: visible;
+  background: rgba(0, 6, 20, 0.6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .home-highlight__motorcycle-image {
-  width: 176px;
-  height: 137px;
+  width: 198px;
+  height: auto;
+  max-height: none;
+  flex: 0 0 auto;
   object-fit: contain;
-  margin-left: -4px;
+  object-position: bottom center;
+  margin: -46px 0 0;
+  flex-shrink: 0;
+  align-self: flex-end;
+  transform: scaleX(-1);
+  transform-origin: center bottom;
 }
 
 .home-highlight__motorcycle-copy {
-  width: 223px;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+  max-width: 260px;
 }
 
 .home-highlight__motorcycle-copy p {
@@ -1217,17 +1254,34 @@
   line-height: 24px;
 }
 
-.home-highlight__motorcycle-copy strong {
-  display: block;
-  margin-top: 6px;
+.home-highlight__motorcycle-heading {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4px;
+  gap: 0;
+  text-align: left;
+}
+
+.home-highlight__motorcycle-title {
   color: #fff;
   font-variant-numeric: lining-nums proportional-nums;
   font-family: "PODIUM Sharp", sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 800;
   line-height: 32px;
-  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.home-highlight__motorcycle-subtitle {
+  margin-top: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: "PODIUM Sharp", sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 32px;
   text-transform: uppercase;
 }
 
@@ -1236,6 +1290,7 @@
   height: 64px;
   object-fit: contain;
   flex-shrink: 0;
+  margin-left: 8px;
 }
 
 .home-highlight__right {
@@ -1704,36 +1759,56 @@
 .home-campaign {
   background: #000614;
   padding: 88px 0;
+  /* Sticky precisa de ancestrais com overflow visível até ao scrollport da página */
+  overflow: visible;
 }
 
 .home-campaign__container {
   width: min(1254px, calc(100% - 112px));
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 614px 600px;
+  /* Proporção Figma (~614 : 600); encolhe com a viewport */
+  grid-template-columns: minmax(0, 614fr) minmax(0, 600fr);
   gap: 40px;
   align-items: start;
+  overflow: visible;
 }
 
+/* Desktop: primeiro filho = coluna esquerda (aside), segundo = mosaico — igual ao markup original. */
 .home-campaign__left {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
-  grid-column: 1;
+  align-self: start;
+  min-width: 0;
+  max-width: 100%;
+  /* Sem backdrop-filter aqui: no Safari, blur no mesmo ramo que sticky costuma matar o sticky. */
 }
 
 .home-campaign__mosaic {
-  grid-column: 2;
   min-width: 0;
-}
-
-@media (min-width: 1201px) {
-  .home-campaign__left-overlap {
-    display: contents;
-  }
+  align-self: start;
 }
 
 .home-campaign__left-box {
   padding: 48px 0 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1201px) {
+  .home-campaign__left,
+  .home-campaign__mosaic {
+    order: 0;
+  }
+
+  /* Painel tipo Figma — fundo sólido (sem backdrop-filter) para o sticky ser fiável em WebKit */
+  .home-campaign__left-box {
+    padding: 48px 32px 40px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background: rgba(0, 6, 20, 0.88);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
 }
 
 .home-campaign__icon {
@@ -1778,6 +1853,7 @@
 
 .home-campaign__card {
   position: relative;
+  isolation: isolate;
   height: 420px;
   border-radius: 8px;
   overflow: hidden;
@@ -1787,6 +1863,7 @@
 .home-campaign__card-overlay-image {
   position: absolute;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1798,18 +1875,28 @@
   right: 0;
   bottom: 0;
   height: 135px;
-  background: linear-gradient(182deg, rgba(0, 6, 20, 0) 12.99%, #000614 96.6%);
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(182.37deg, rgba(0, 6, 20, 0) 12.99%, rgb(0, 6, 20) 96.6%);
 }
 
-.home-campaign__card h3 {
+.home-campaign__card h3,
+.home-campaign__card-title {
   position: absolute;
   left: 32px;
   right: 32px;
   bottom: 32px;
+  z-index: 2;
   margin: 0;
+  color: #fff;
+  font-family: "PODIUM Sharp", sans-serif;
   font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
   line-height: 32px;
   text-transform: uppercase;
+  font-variant-numeric: lining-nums proportional-nums;
 }
 
 .home-legacy {
@@ -3252,19 +3339,57 @@ a.home-footer__made-by:hover {
     line-height: 1.35;
   }
 
-  .home-highlight__left {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: 100%;
-    height: 460px;
+  .home-intro-highlight__bridge-video {
+    height: auto;
+    pointer-events: auto;
+
+    > .home-highlight__left {
+      position: relative;
+      left: auto;
+      top: auto;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      border-radius: 24px;
+      overflow: visible;
+    }
+
+    .home-highlight__video {
+      position: relative;
+      left: auto;
+      top: auto;
+      width: 100%;
+      height: 460px;
+      margin-top: 0;
+      border-radius: 24px;
+      overflow: hidden;
+    }
   }
 
-  .home-highlight__video {
+  .home-highlight__motorcycle-card {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
     width: 100%;
-    height: 100%;
-    margin-top: 0;
-    border-radius: 24px;
+    height: 142px;
+    min-height: 0;
+    justify-content: space-between;
+    border-radius: 0 0 24px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 6, 20, 0.6);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    overflow: visible;
+  }
+
+  .home-highlight__motorcycle-image {
+    width: min(42vw, 198px);
+    height: auto;
+    margin: -34px 0 0;
+    align-self: flex-end;
+    object-fit: contain;
+    object-position: bottom center;
   }
 
   .home-highlight__right {
@@ -3353,14 +3478,9 @@ a.home-footer__made-by:hover {
     grid-template-columns: 1fr;
   }
 
-  .home-campaign__left {
-    position: static;
-    grid-column: 1;
-    z-index: 2;
-    margin-top: 0;
-  }
-
+  /* Mosaico primeiro no mobile (markup: aside antes do mosaico no DOM) */
   .home-campaign__mosaic {
+    order: 1;
     grid-column: 1;
     width: 100vw;
     max-width: 100vw;
@@ -3368,6 +3488,14 @@ a.home-footer__made-by:hover {
     margin-right: calc(50% - 50vw);
     position: relative;
     isolation: isolate;
+  }
+
+  .home-campaign__left {
+    order: 2;
+    position: static;
+    grid-column: 1;
+    z-index: 2;
+    margin-top: 0;
   }
 
   .home-campaign__mosaic::after {
@@ -3416,6 +3544,9 @@ a.home-footer__made-by:hover {
     padding: 8px 20px 40px;
     text-align: center;
     background: #000614;
+    border-radius: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     box-sizing: border-box;
   }
 
@@ -3447,7 +3578,8 @@ a.home-footer__made-by:hover {
     margin-top: 28px;
   }
 
-  .home-campaign__card h3 {
+  .home-campaign__card h3,
+  .home-campaign__card-title {
     font-size: 28px;
   }
 
@@ -3827,25 +3959,40 @@ a.home-footer__made-by:hover {
     background-image: none;
   }
 
-  .home-highlight__left {
-    border-radius: 20px;
-    overflow: hidden;
+  .home-intro-highlight__bridge-video > .home-highlight__left {
+    border-radius: 24px;
+    overflow: visible;
   }
 
   .home-highlight__video {
     height: 460px;
-    border-radius: 20px 20px 0 0;
+    border-radius: 24px;
+    overflow: hidden;
   }
 
   .home-highlight__motorcycle-card {
-    padding: 16px 18px 15px;
-    border-radius: 0 0 20px 20px;
+    width: 100%;
+    height: 142px;
+    min-height: 0;
+    padding: 12px 14px 12px 6px;
+    border-radius: 0 0 24px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     align-items: center;
+    justify-content: space-between;
+    overflow: visible;
+    background: rgba(0, 6, 20, 0.6);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 
   .home-highlight__motorcycle-image {
-    width: 130px;
+    width: min(42vw, 180px);
     height: auto;
+    max-height: none;
+    margin: -28px 0 0;
+    align-self: flex-end;
+    object-fit: contain;
+    object-position: bottom center;
   }
 
   .home-highlight__motorcycle-copy {
@@ -3853,9 +4000,38 @@ a.home-footer__made-by:hover {
     flex: 1;
   }
 
-  .home-highlight__motorcycle-copy strong {
-    font-size: 20px;
-    line-height: 1.3;
+  .home-highlight__motorcycle-copy p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.69);
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  .home-highlight__motorcycle-title {
+    color: #fff;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: "PODIUM Sharp", sans-serif;
+    font-size: clamp(18px, 5vw, 24px);
+    font-style: normal;
+    font-weight: 800;
+    line-height: 1.33;
+    text-transform: uppercase;
+  }
+
+  .home-highlight__motorcycle-subtitle {
+    margin-top: 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: "PODIUM Sharp", sans-serif;
+    font-size: clamp(18px, 5vw, 24px);
+    font-style: normal;
+    font-weight: 800;
+    line-height: 1.33;
+    text-transform: uppercase;
   }
 
   /* Bloco inferior (copy + CTA) — layout mobile Figma */
@@ -4203,7 +4379,8 @@ a.home-footer__made-by:hover {
     min-height: 0;
   }
 
-  .home-campaign__card h3 {
+  .home-campaign__card h3,
+  .home-campaign__card-title {
     left: 16px;
     right: 16px;
     bottom: 16px;

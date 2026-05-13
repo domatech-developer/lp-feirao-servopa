@@ -61,7 +61,7 @@ const IntroHighlightBridge = () => {
         </div>
       </section>
 
-      <section className="home-highlight">
+      <div className="home-intro-highlight__bridge-video">
         <div className="home-highlight__left">
           <div className="home-highlight__video">
             <div className="home-highlight__video-crop">
@@ -74,16 +74,21 @@ const IntroHighlightBridge = () => {
             </div>
           </div>
           <div className="home-highlight__motorcycle-glow" aria-hidden />
-          <div className="home-highlight__motorcycle-card">
+          <div className="home-highlight__motorcycle-card" data-node-id="1258:5058">
             <img src={highlightMotorcycle} alt="" className="home-highlight__motorcycle-image" />
             <div className="home-highlight__motorcycle-copy">
               <p>Concorra a uma</p>
-              <strong>Harley Davidson modelo Street Bob</strong>
+              <div className="home-highlight__motorcycle-heading" role="group" aria-label="Harley Davidson Modelo Street Bob">
+                <span className="home-highlight__motorcycle-title">Harley Davidson</span>
+                <span className="home-highlight__motorcycle-subtitle">Street Bob</span>
+              </div>
             </div>
             <img src={highlightHarleyLogo} alt="Harley-Davidson" className="home-highlight__harley-badge" />
           </div>
         </div>
+      </div>
 
+      <section className="home-highlight">
         <div className="home-highlight__right">
           <span className="home-tag">22 e 23/5</span>
           <h2>Dois dias para acelerar sua próxima conquista</h2>

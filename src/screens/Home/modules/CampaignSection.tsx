@@ -33,16 +33,7 @@ const CampaignSection = () => {
   return (
     <section className="home-campaign">
       <div className="home-campaign__container">
-        <div className="home-campaign__mosaic">
-          <div className="home-campaign__cards">
-            {cards.map((card) => (
-              <article key={card.title} className="home-campaign__card">
-                <img src={card.image} alt="" className="home-campaign__card-image" />
-              </article>
-            ))}
-          </div>
-        </div>
-
+        {/* Desktop: aside primeiro = coluna 1 no grid (igual ao layout pré-mobile). Mobile: order no SCSS põe o mosaico acima. */}
         <aside className="home-campaign__left">
           <div className="home-campaign__left-box">
             <div className="home-campaign__left-overlap">
@@ -60,6 +51,18 @@ const CampaignSection = () => {
             </button>
           </div>
         </aside>
+
+        <div className="home-campaign__mosaic">
+          <div className="home-campaign__cards">
+            {cards.map((card) => (
+              <article key={card.title} className="home-campaign__card">
+                <img src={card.image} alt="" className="home-campaign__card-image" />
+                <div className="home-campaign__card-overlay" aria-hidden />
+                <h3 className="home-campaign__card-title">{card.title}</h3>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
