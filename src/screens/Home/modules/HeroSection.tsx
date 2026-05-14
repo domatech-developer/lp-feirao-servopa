@@ -1,6 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
+import { memo } from "react";
 import { useFeiraoCountdown } from "../FeiraoCountdownContext";
 import { useHomeFormModal } from "../HomeFormModalContext";
 
@@ -19,8 +20,32 @@ const logoServopa = "/images/4673a74e78345a46f5e60b22edfa6d5b975cc62a.svg";
 
 const spotlightMaskCss = `url("${heroSpotlightMask}")`;
 
-const HeroSection = () => {
+/** Isolado do palco animado: o tick do countdown não deve re-renderizar todo o hero (causa piscar no mobile). */
+const HeroCountdownValues = memo(function HeroCountdownValues() {
   const { days, hours, minutes, seconds } = useFeiraoCountdown();
+  return (
+    <div className="home-hero__countdown-values" aria-live="polite">
+      <div>
+        <strong>{days}</strong>
+        <span>Dias</span>
+      </div>
+      <div>
+        <strong>{hours}</strong>
+        <span>Horas</span>
+      </div>
+      <div>
+        <strong>{minutes}</strong>
+        <span>Minutos</span>
+      </div>
+      <div>
+        <strong>{seconds}</strong>
+        <span>Segundos</span>
+      </div>
+    </div>
+  );
+});
+
+const HeroSection = () => {
   const { openFeiraoFormModal } = useHomeFormModal();
 
   return (
@@ -141,24 +166,7 @@ const HeroSection = () => {
             <p id="home-hero-countdown-label" className="home-hero__countdown-title">
               Dias para o Feirão Servopa:
             </p>
-            <div className="home-hero__countdown-values" aria-live="polite">
-              <div>
-                <strong>{days}</strong>
-                <span>Dias</span>
-              </div>
-              <div>
-                <strong>{hours}</strong>
-                <span>Horas</span>
-              </div>
-              <div>
-                <strong>{minutes}</strong>
-                <span>Minutos</span>
-              </div>
-              <div>
-                <strong>{seconds}</strong>
-                <span>Segundos</span>
-              </div>
-            </div>
+            <HeroCountdownValues />
           </div>
 
           <div className="home-hero__top-logo">
