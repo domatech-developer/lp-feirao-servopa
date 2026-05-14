@@ -3,11 +3,11 @@
 import { useHomeFormModal } from "../HomeFormModalContext";
 import { useSyncedTwinVideos } from "./useSyncedTwinVideos";
 
-const introMaskOverlay = "/images/ef7423ac557df94146f57db8f2d4a23f5e96fdb8.png";
+const introMaskOverlay = "/images/ef7423ac557df94146f57db8f2d4a23f5e96fdb8.webp";
 const introBrandIcon = "/images/bed37c44867b1bb4be2485766a38599cb011b8d6.svg";
-const highlightMotorcycle = "/images/c74b968146cd5fdabac1ffb75f37acca06145276.png";
+const highlightMotorcycle = "/images/c74b968146cd5fdabac1ffb75f37acca06145276.webp";
 const highlightVideoSrc = "/videos/harley-video.mp4";
-const highlightHarleyLogo = "/images/harley-davidson-logo.png";
+const highlightHarleyLogo = "/images/harley-davidson-logo.webp";
 
 const IntroHighlightBridge = () => {
   const { primaryRef, secondaryRef } = useSyncedTwinVideos();

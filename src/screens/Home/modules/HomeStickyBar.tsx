@@ -6,7 +6,7 @@ import { useHomeFormModal } from "../HomeFormModalContext";
 
 const SHOW_AFTER_SCROLL_PX = 80;
 const logoServopa = "/images/4673a74e78345a46f5e60b22edfa6d5b975cc62a.svg";
-const heroBadge = "/images/1bfa78d186eb2753576470238f528a052d0138d4.png";
+const heroBadge = "/images/1bfa78d186eb2753576470238f528a052d0138d4.webp";
 
 const HomeStickyBar = () => {
   const [visible, setVisible] = useState(false);

@@ -5,16 +5,16 @@ import { useEffect, useRef, useState } from "react";
 import { useHomeFormModal } from "../HomeFormModalContext";
 
 const servopaLogo = "/images/d7b93205623972d4c639db156b36beaaaf717504.svg";
-const footerCardBg = "/images/82ae1ce451dd66d07090abc04aea64d4f90c17eb.png";
+const footerCardBg = "/images/82ae1ce451dd66d07090abc04aea64d4f90c17eb.webp";
 const agencyLogo = "/images/c494d98b8cdc72971d9e18e4a4c1aba1e5bd5e31.svg";
 
 /** Ordem centro → lados (animação de entrada). Anexos 3–7 → posições esq. → dir. */
 const FOOTER_CTA_STAR_SRC = [
-  "/images/footer-cta-star-0.png",
-  "/images/footer-cta-star-1.png",
-  "/images/footer-cta-star-2.png",
-  "/images/footer-cta-star-3.png",
-  "/images/footer-cta-star-4.png",
+  "/images/footer-cta-star-0.webp",
+  "/images/footer-cta-star-1.webp",
+  "/images/footer-cta-star-2.webp",
+  "/images/footer-cta-star-3.webp",
+  "/images/footer-cta-star-4.webp",
 ] as const;
 
 /** Ordem centro → lados. */

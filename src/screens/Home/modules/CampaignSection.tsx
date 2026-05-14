@@ -3,10 +3,10 @@
 import { useHomeFormModal } from "../HomeFormModalContext";
 
 const introIcon = "/images/bed37c44867b1bb4be2485766a38599cb011b8d6.svg";
-const cardOne = "/images/232957beec604e92bb1c62f58f090c96-campaign-card-1.png";
-const cardTwo = "/images/9b0c43e692374f39abc1fc1c4fa1a326-campaign-card-2.png";
-const cardThree = "/images/edad10ad4eb046ea837b2e92e710f87c-campaign-card-3.png";
-const cardFour = "/images/fd55dbc487244409801a07ee97a72a30-campaign-card-4.png";
+const cardOne = "/images/232957beec604e92bb1c62f58f090c96-campaign-card-1.webp";
+const cardTwo = "/images/9b0c43e692374f39abc1fc1c4fa1a326-campaign-card-2.webp";
+const cardThree = "/images/edad10ad4eb046ea837b2e92e710f87c-campaign-card-3.webp";
+const cardFour = "/images/fd55dbc487244409801a07ee97a72a30-campaign-card-4.webp";
 
 const cards = [
   {

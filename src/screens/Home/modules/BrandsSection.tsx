@@ -3,33 +3,33 @@
 import { useEffect, useState } from "react";
 import { useHomeFormModal } from "../HomeFormModalContext";
 
-const selectedBrandLogo = "/images/60a67738f8f949e78b7f2cb8deb87400.png";
-const brandVwMuted = "/images/fb06e28adab84700991e3a659c4860cb.png";
-const brandBydMuted = "/images/brandBydMuted.png";
-const brandByd = "/images/213f6b0f111247d88288496683f696d9.png";
-const brandAudi = "/images/282a55849ff04151b0a4570bdc1fc346.png";
-const brandAudiMuted = "/images/brandAudiMuted.png";
-const brandVwco = "/images/ef153a967ffd465f98e4f655240030d2.png";
-const brandVwcoMuted = "/images/brandVwcoMuted.png";
-const brandCitroen = "/images/c7b7133f47844540a9b40b5aeb8723c3.png";
-const brandCitroenMuted = "/images/brandCitroenMuted.png";
-const brandVolvo = "/images/2f784c237fb14e0f9726c9da75a91666.png";
-const brandVolvoMuted = "/images/brandVolvoMuted.png";
-const brandHonda = "/images/e3316d3b0e6447399ce47ecf64084885.png";
-const brandHondaMuted = "/images/brandHondaMuted.png";
-const brandHyundai = "/images/03b91d4537cf42e19f8beb3b7d18defd.png";
-const brandHyundaiMuted = "/images/brandHyundaiMuted.png";
-const brandTriumph = "/images/a2e3240d9c514943b1852b6d77bf974c.png";
-const brandTriumphMuted = "/images/brandTriumphMuted.png";
-const brandHarley = "/images/6261006d710b4a72b50d69f894644078.png";
-const brandHarleyMuted = "/images/brandHarleyMuted.png";
-const brandPeugeot = "/images/ee91c48ccd84514bb24ac645a4c57a.png";
-const brandPeugeotMuted = "/images/brandPeugeotMuted.png";
-const brandGac = "/images/f2917c2bb1404b599e6536b60feffb9e.png";
-const brandGacMuted = "/images/brandGacMuted.png";
-const brandSeminovos = "/images/34bca46728434a7cb2ba8589ee4c3760.png";
-const brandSeminovosMuted = "/images/brandSeminovosMuted.png";
-const brandsHarleyBanner = "/images/53a4c955269f4a5a9501e026eafedae3.png";
+const selectedBrandLogo = "/images/60a67738f8f949e78b7f2cb8deb87400.webp";
+const brandVwMuted = "/images/fb06e28adab84700991e3a659c4860cb.webp";
+const brandBydMuted = "/images/brandBydMuted.webp";
+const brandByd = "/images/213f6b0f111247d88288496683f696d9.webp";
+const brandAudi = "/images/282a55849ff04151b0a4570bdc1fc346.webp";
+const brandAudiMuted = "/images/brandAudiMuted.webp";
+const brandVwco = "/images/ef153a967ffd465f98e4f655240030d2.webp";
+const brandVwcoMuted = "/images/brandVwcoMuted.webp";
+const brandCitroen = "/images/c7b7133f47844540a9b40b5aeb8723c3.webp";
+const brandCitroenMuted = "/images/brandCitroenMuted.webp";
+const brandVolvo = "/images/2f784c237fb14e0f9726c9da75a91666.webp";
+const brandVolvoMuted = "/images/brandVolvoMuted.webp";
+const brandHonda = "/images/e3316d3b0e6447399ce47ecf64084885.webp";
+const brandHondaMuted = "/images/brandHondaMuted.webp";
+const brandHyundai = "/images/03b91d4537cf42e19f8beb3b7d18defd.webp";
+const brandHyundaiMuted = "/images/brandHyundaiMuted.webp";
+const brandTriumph = "/images/a2e3240d9c514943b1852b6d77bf974c.webp";
+const brandTriumphMuted = "/images/brandTriumphMuted.webp";
+const brandHarley = "/images/6261006d710b4a72b50d69f894644078.webp";
+const brandHarleyMuted = "/images/brandHarleyMuted.webp";
+const brandPeugeot = "/images/ee91c48ccd84514bb24ac645a4c57a.webp";
+const brandPeugeotMuted = "/images/brandPeugeotMuted.webp";
+const brandGac = "/images/f2917c2bb1404b599e6536b60feffb9e.webp";
+const brandGacMuted = "/images/brandGacMuted.webp";
+const brandSeminovos = "/images/34bca46728434a7cb2ba8589ee4c3760.webp";
+const brandSeminovosMuted = "/images/brandSeminovosMuted.webp";
+const brandsHarleyBanner = "/images/53a4c955269f4a5a9501e026eafedae3.webp";
 const servopaLogo = "/images/d7b93205623972d4c639db156b36beaaaf717504.svg";
 
 type BrandTone = "blue" | "red" | "black";
@@ -46,80 +46,80 @@ const brands = [
     name: "Volkswagen",
     logo: selectedBrandLogo,
     logoMuted: brandVwMuted,
-    shield: "/images/shieldVw.png",
+    shield: "/images/shieldVW.webp",
   },
   { 
     name: "BYD", 
     logo: brandByd, 
     logoMuted: brandBydMuted,
-    shield: "/images/shieldByd.png", 
+    shield: "/images/shieldBYD.webp", 
   },
   { 
     name: "Audi", 
     logo: brandAudi, 
     logoMuted: brandAudiMuted, 
-    shield: "/images/shieldAudi.png", 
+    shield: "/images/shieldAUDI.webp", 
   },
   { 
     name: "VWCO", 
     logo: brandVwco, 
     logoMuted: brandVwcoMuted,
-    shield: "/images/shieldVwco.png", 
+    shield: "/images/shieldVWCO.webp", 
   },
   { 
     name: "Citroën", 
     logo: brandCitroen, 
     logoMuted: brandCitroenMuted,
-    shield: "/images/shieldCitroen.png", 
+    shield: "/images/shieldCITROEN.webp", 
   },
   { 
     name: "Volvo", 
     logo: brandVolvo, 
     logoMuted: brandVolvoMuted,
-    shield: "/images/shieldVolvo.png", 
+    shield: "/images/shieldVOLVO.webp", 
   },
   { 
     name: "Honda", 
     logo: brandHonda,
     logoMuted: brandHondaMuted,
-    shield: "/images/shieldHonda.png", 
+    shield: "/images/shieldHONDA.webp", 
   },
   { 
     name: "Hyundai", 
     logo: brandHyundai, 
     logoMuted: brandHyundaiMuted,
-    shield: "/images/shieldHyundai.png", 
+    shield: "/images/shieldHYUNDAI.webp", 
   },
   { 
     name: "Triumph", 
     logo: brandTriumph, 
     logoMuted: brandTriumphMuted,
-    shield: "/images/shieldTriumph.png", 
+    shield: "/images/shieldTRIUMPH.webp", 
   },
   { 
     name: "Harley Davidson", 
     logo: brandHarley, 
     logoMuted: brandHarleyMuted,
-    shield: "/images/shieldHarley.png", 
+    shield: "/images/shieldHARLEY.webp", 
   },
   { 
     name: "Peugeot", 
     logo: brandPeugeot, 
     logoMuted: brandPeugeotMuted,
-    shield: "/images/shieldPeugeot.png", 
+    shield: "/images/shieldPEUGEOT.webp", 
   },
   { 
     name: "GAC", 
     logo: brandGac, 
     logoMuted: brandGacMuted,
     tone: "black", 
-    shield: "/images/shieldGac.png", 
+    shield: "/images/shieldGAC.webp", 
   },
   { 
     name: "Servopa Seminovos", 
     logo: brandSeminovos, 
     logoMuted: brandSeminovosMuted,
-    shield: "/images/shieldSeminovos.png", 
+    shield: "/images/shieldSeminovos.webp", 
   },
 ] as BrandItem[];
 

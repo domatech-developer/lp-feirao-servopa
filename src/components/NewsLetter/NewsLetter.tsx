@@ -128,7 +128,7 @@ const NewsLetter: FC<NewsLetterProps> = ({ data, debug }) => {
           </form>
         </div>
         <div className="newsLetter__imgContent">
-          <ImgDefault className="newsLetter__img" src={"/images/teadit.gif"} alt="Logo Teadit" />
+          <ImgDefault className="newsLetter__img" src={"/images/teadit-red-white.webp"} alt="Logo Teadit" />
         </div>
       </div>
     </section>

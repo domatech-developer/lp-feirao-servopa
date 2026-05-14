@@ -1,6 +1,6 @@
-const legacyBanner = "/images/444f5dc9c54c46229df1b9a4114f5701-legacy-banner.png";
-const legacyLogoLeft = "/images/d143791e24c5b3dca73298961d0a304573225afd.png";
-const legacyLogoRight = "/images/5c430148af9c5396339b3297093c6b66b2580f84.png";
+const legacyBanner = "/images/444f5dc9c54c46229df1b9a4114f5701-legacy-banner.webp";
+const legacyLogoLeft = "/images/d143791e24c5b3dca73298961d0a304573225afd.webp";
+const legacyLogoRight = "/images/5c430148af9c5396339b3297093c6b66b2580f84.webp";
 const legacyBrandIcon = "/images/bed37c44867b1bb4be2485766a38599cb011b8d6.svg";
 
 const LegacySection = () => {
