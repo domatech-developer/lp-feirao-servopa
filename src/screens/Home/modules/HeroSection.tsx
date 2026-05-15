@@ -174,9 +174,6 @@ const HeroSection = () => {
           </div>
 
           <div className="home-hero__actions">
-            <button type="button" className="home-pill-btn home-pill-btn--hero-link">
-              Localização
-            </button>
             <button
               type="button"
               className="home-pill-btn home-pill-btn--hero-cta"

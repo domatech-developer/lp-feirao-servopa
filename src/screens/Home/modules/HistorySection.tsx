@@ -108,10 +108,7 @@ export default function HistorySection() {
           />
         </div>
         <div className="home-history__veil" aria-hidden />
-        <div className="home-history__content">
-          <h2 id="servopa-story-title" className="home-history__title">
-            <strong>Fundado em 1955, o Grupo Servopa</strong> é um dos maiores grupos automotivos do Brasil
-          </h2>
+        <div className="home-history__play-overlay">
           <button
             ref={openPlayRef}
             id="abrir_video_servopa_play"
@@ -137,6 +134,11 @@ export default function HistorySection() {
               </span>
             </span>
           </button>
+        </div>
+        <div className="home-history__content">
+          <h2 id="servopa-story-title" className="home-history__title">
+            <strong>Fundado em 1955, o Grupo Servopa</strong> é um dos maiores grupos automotivos do Brasil
+          </h2>
         </div>
       </section>
 

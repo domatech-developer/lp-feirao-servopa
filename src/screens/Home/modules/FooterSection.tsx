@@ -126,7 +126,12 @@ const FooterSection = () => {
           ref={footerCtaShellRef}
           className={`home-footer__cta-card-shell${footerCtaStarsReveal ? " home-footer__cta-card-shell--stars-reveal" : ""}`}
         >
-          <div className="home-footer__cta-card" data-node-id="1313:23173">
+          <button
+            type="button"
+            className="home-footer__cta-card"
+            data-node-id="1313:23173"
+            onClick={() => openFeiraoFormModal()}
+          >
             <div className="home-footer__cta-bg-layer" aria-hidden="true">
               <div className="home-footer__cta-bg-tint" />
               <img src={footerCardBg} alt="" className="home-footer__cta-bg" />
@@ -178,25 +183,25 @@ const FooterSection = () => {
                 <div className="home-footer__cta-ribbon-gutter">
                   <FooterCtaRibbonBadge />
                 </div>
-                <p className="home-footer__cta-ribbon-title">
+                <span className="home-footer__cta-ribbon-title">
                   Escolha sua marca e entre em campo no feirão
-                </p>
+                </span>
                 <div className="home-footer__cta-ribbon-gutter home-footer__cta-ribbon-gutter--balance" aria-hidden />
                 </div>
               </div>
 
               <div className="home-footer__cta-copy">
-              <p>
+              <span className="home-footer__cta-copy-lead">
                 Selecione a marca de interesse e, em seguida, escolha a concessionária participante
                 mais conveniente para o seu atendimento.
-              </p>
-              <button type="button" className="home-footer__cta-link" onClick={() => openFeiraoFormModal()}>
+              </span>
+              <span className="home-footer__cta-link">
                 <span>Escolha sua marca</span>
                 <span className="home-footer__cta-arrow" aria-hidden />
-              </button>
+              </span>
               </div>
             </div>
-          </div>
+          </button>
         </div>
 
         <nav className="home-footer__links" aria-label="Links do rodapé">
