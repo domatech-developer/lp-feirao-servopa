@@ -1,4 +1,4 @@
-/* Modal formulário Feirão — ref. Figma node 1305:11364 (Servopa Proposta) */
+/* Modal formulário Feirão — Figma node 1305:11364 (Servopa Proposta, figma-desktop) */
 
 .feirao-form-modal__backdrop {
   position: fixed;
@@ -15,17 +15,16 @@
 
 .feirao-form-modal__dialog {
   position: relative;
-  width: min(520px, 100%);
-  max-height: min(92vh, 900px);
+  width: min(499px, 100%);
+  max-height: min(768px, 92vh);
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  overflow: hidden;
+  padding: 24px;
   background: #fff;
   color: #000;
-  box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
-  font-family: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+  font-family: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   animation: feirao-form-modal-rise 0.36s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
@@ -33,52 +32,83 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
-  padding: 22px 22px 12px;
+  gap: 8px;
+  padding-bottom: 24px;
   flex-shrink: 0;
+}
+
+.feirao-form-modal__header-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
 }
 
 .feirao-form-modal__title {
   margin: 0;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  color: #000;
+  line-height: normal;
+  color: #000614;
+  font-feature-settings: "lnum", "pnum";
+}
+
+.feirao-form-modal__branding {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.feirao-form-modal__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 4px 8px 4px 16px;
+  border-radius: 8px;
+  border-left: 8px solid #03c73f;
+  background: linear-gradient(56.13deg, #ffbb00 2%, #ffcd45 87.4%);
+  color: #001584;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-feature-settings: "lnum", "pnum";
+}
+
+.feirao-form-modal__logo {
+  display: block;
+  width: auto;
+  max-width: 158px;
+  height: 28px;
+  object-fit: contain;
+  object-position: left center;
+  /* Asset público é branco (FE → fundos escuros); no modal claro precisa contrastar */
+  filter: brightness(0);
 }
 
 .feirao-form-modal__close {
-  position: relative;
   flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
-  margin: -6px -6px 0 0;
-  padding: 0;
+  margin: -8px -8px 0 0;
+  padding: 8px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 300px;
   background: transparent;
   cursor: pointer;
   transition: background 0.2s ease;
 }
 
-.feirao-form-modal__close::before,
-.feirao-form-modal__close::after {
-  content: "";
-  position: absolute;
-  margin: auto;
-  inset: 0;
-  width: 16px;
-  height: 2px;
-  border-radius: 1px;
-  background: #1a1a1a;
-}
-
-.feirao-form-modal__close::before {
-  transform: rotate(45deg);
-}
-
-.feirao-form-modal__close::after {
-  transform: rotate(-45deg);
+.feirao-form-modal__close img {
+  display: block;
+  width: 24px;
+  height: 24px;
 }
 
 .feirao-form-modal__close:hover {
@@ -86,12 +116,11 @@
 }
 
 .feirao-form-modal__close:focus-visible {
-  outline: 2px solid #0367ad;
+  outline: 2px solid #027bff;
   outline-offset: 2px;
 }
 
 .feirao-form-modal__body {
-  padding: 4px 22px 22px;
   overflow-y: auto;
   min-height: 0;
 }
@@ -99,7 +128,7 @@
 .feirao-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .feirao-form__input,
@@ -107,14 +136,15 @@
 .feirao-form__textarea {
   box-sizing: border-box;
   width: 100%;
-  min-height: 52px;
-  padding: 14px 16px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
+  min-height: 48px;
+  padding: 16px 12px;
+  border: 1px solid #cacaca;
+  border-radius: 4px;
   background: #fff;
-  font: inherit;
-  font-size: 15px;
-  line-height: 1.25;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
   color: #000;
   transition:
     border-color 0.2s ease,
@@ -129,26 +159,25 @@
 .feirao-form__input:hover,
 .feirao-form__select:hover,
 .feirao-form__textarea:hover {
-  border-color: #bfc5cc;
+  border-color: #b8b8b8;
 }
 
 .feirao-form__input:focus-visible,
 .feirao-form__select:focus-visible,
 .feirao-form__textarea:focus-visible {
-  border-color: #0367ad;
+  border-color: #027bff;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(3, 103, 173, 0.18);
+  box-shadow: 0 0 0 3px rgba(2, 123, 255, 0.18);
 }
 
 .feirao-form__select {
   appearance: none;
-  padding-right: 44px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23545d63' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.6' d='M5 8l5 5 5-5'/%3E%3C/svg%3E");
+  padding-right: 40px;
+  background-image: url("/images/feirao-form-chevron.svg");
   background-repeat: no-repeat;
-  background-position: right 14px center;
-  background-color: #fff;
+  background-position: right 12px center;
+  background-size: 20px 20px;
   cursor: pointer;
-  color: #000;
 }
 
 .feirao-form__select:invalid,
@@ -156,84 +185,125 @@
   color: #757575;
 }
 
+.feirao-form__select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background-color: #f7f7f7;
+}
+
+.feirao-form__summary {
+  padding: 14px 16px;
+  border: 1px solid rgba(2, 123, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(2, 123, 255, 0.06);
+  animation: feirao-form-summary-in 0.25s ease;
+}
+
+.feirao-form__summary-title {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #027bff;
+}
+
+.feirao-form__summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(2, 123, 255, 0.12);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.feirao-form__summary-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.feirao-form__summary-key {
+  color: #545d63;
+  white-space: nowrap;
+}
+
+.feirao-form__summary-val {
+  font-weight: 500;
+  color: #000;
+  text-align: right;
+}
+
+.feirao-form__summary-id {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: rgba(2, 123, 255, 0.12);
+  color: #027bff;
+  font-size: 11px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+@keyframes feirao-form-summary-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .feirao-form__textarea {
-  min-height: 112px;
+  min-height: 96px;
   resize: vertical;
 }
 
 .feirao-form__float {
   position: relative;
-  display: flex;
-  flex-direction: column;
 }
 
 .feirao-form__float .feirao-form__select,
 .feirao-form__float .feirao-form__input {
-  padding-top: 18px;
+  padding-top: 22px;
   padding-bottom: 10px;
 }
 
 .feirao-form__float-label {
   position: absolute;
-  left: 13px;
-  top: 50%;
+  left: 12px;
+  top: 0;
   transform: translateY(-50%);
-  font-size: 15px;
-  line-height: 1;
+  padding: 0 4px;
+  background: #fff;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0.15px;
   color: #757575;
   pointer-events: none;
-  transition:
-    transform 0.18s ease,
-    font-size 0.18s ease,
-    top 0.18s ease,
-    color 0.18s ease;
-  background: linear-gradient(#fff, #fff) padding-box;
-  padding: 0 4px;
-  margin: 0 -4px;
   z-index: 1;
 }
 
 .feirao-form__float-label--raised {
-  top: 1px;
-  transform: translateY(0);
-  font-size: 11px;
-  font-weight: 600;
-  color: #424242;
-  letter-spacing: 0.01em;
-}
-
-.feirao-form__datetime-shell {
-  position: relative;
+  /* sempre visível nos campos com label flutuante do Figma */
 }
 
 .feirao-form__datetime-shell .feirao-form__input {
-  padding-right: 48px;
-}
-
-.feirao-form__datetime-shell .feirao-form__float-label {
-  left: 13px;
-}
-
-.feirao-form__datetime-icon {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 22px;
-  height: 22px;
-  pointer-events: none;
-  color: #545d63;
+  padding-right: 12px;
 }
 
 .feirao-form__datetime-shell .feirao-form__input::-webkit-calendar-picker-indicator {
-  position: absolute;
-  right: 0;
-  width: 48px;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
   cursor: pointer;
-  opacity: 0;
+  opacity: 1;
 }
 
 .feirao-form__fieldset {
@@ -244,26 +314,30 @@
 
 .feirao-form__legend {
   padding: 0;
-  margin-bottom: 10px;
-  font-size: 15px;
-  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
   color: #000;
+  font-feature-settings: "lnum", "pnum";
 }
 
 .feirao-form__radios {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 16px;
 }
 
 .feirao-form__radio {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 0;
   cursor: pointer;
-  font-size: 15px;
-  color: #000;
+  font-size: 16px;
+  line-height: 28px;
+  color: rgba(0, 0, 0, 0.8);
   user-select: none;
+  font-feature-settings: "lnum", "pnum";
 }
 
 .feirao-form__radio input {
@@ -273,96 +347,125 @@
   height: 0;
 }
 
-.feirao-form__radio-ui {
-  box-sizing: border-box;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid #c4c9cf;
-  display: grid;
-  place-items: center;
+.feirao-form__radio-icon {
+  display: block;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.feirao-form__radio-ui::after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #0367ad;
-  transform: scale(0);
-  transition: transform 0.18s ease;
-}
-
-.feirao-form__radio input:checked + .feirao-form__radio-ui {
-  border-color: #0367ad;
-}
-
-.feirao-form__radio input:checked + .feirao-form__radio-ui::after {
-  transform: scale(1);
-}
-
-.feirao-form__radio input:focus-visible + .feirao-form__radio-ui {
-  box-shadow: 0 0 0 3px rgba(3, 103, 173, 0.22);
 }
 
 .feirao-form__consent {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  line-height: 1.45;
-  color: #333;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.8);
+  font-feature-settings: "lnum", "pnum";
 }
 
 .feirao-form__consent input {
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.feirao-form__consent-icon,
+.feirao-form__consent-box {
   flex-shrink: 0;
-  accent-color: #0367ad;
+  width: 40px;
+  height: 40px;
+}
+
+.feirao-form__consent-box {
+  box-sizing: border-box;
+  border: 2px solid #cacaca;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.feirao-form__consent-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
   cursor: pointer;
+}
+
+.feirao-form__consent-link:hover {
+  color: #027bff;
 }
 
 .feirao-form__submit {
-  margin-top: 4px;
+  position: relative;
+  margin-top: 0;
   width: 100%;
-  min-height: 52px;
+  min-height: 48px;
+  padding: 12px 16px;
   border: 0;
-  border-radius: 8px;
-  background: linear-gradient(180deg, #00c45f 0%, #00964a 100%);
+  border-radius: 4px;
+  background: #027bff;
   color: #fff;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 150, 74, 0.35);
+  box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.4);
   transition:
-    transform 0.15s ease,
-    filter 0.15s ease;
+    filter 0.15s ease,
+    opacity 0.15s ease;
+  font-feature-settings: "lnum", "pnum";
 }
 
-.feirao-form__submit:hover {
-  filter: brightness(1.04);
-}
-
-.feirao-form__submit:active {
-  transform: translateY(1px);
+.feirao-form__submit:hover:not(:disabled) {
+  filter: brightness(1.06);
 }
 
 .feirao-form__submit:focus-visible {
-  outline: 2px solid #0367ad;
+  outline: 2px solid #027bff;
   outline-offset: 3px;
 }
 
 .feirao-form__submit:disabled {
   opacity: 0.45;
   cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+}
+
+.feirao-form__feedback {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.feirao-form__feedback--success {
+  border: 1px solid rgba(2, 123, 255, 0.25);
+  background: rgba(2, 123, 255, 0.08);
+  color: #000614;
+}
+
+.feirao-form__feedback--error {
+  border: 1px solid rgba(198, 40, 40, 0.25);
+  background: rgba(198, 40, 40, 0.08);
+  color: #8b1a1a;
+}
+
+.feirao-form__feedback-title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #027bff;
+}
+
+.feirao-form__feedback-text {
+  margin: 0;
 }
 
 @keyframes feirao-form-modal-fade {

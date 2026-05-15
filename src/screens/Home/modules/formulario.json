@@ -1,0 +1,41 @@
+{
+    "customer": {
+        "name": "nome",
+        "emails": [
+            "customer@email.com"
+        ],
+        "phones": [
+            {
+                "ddi": 55,
+                "ddd": 51,
+                "numero": 999999999,
+                "tipo": "RESIDENCIAL"
+            },
+            {
+                "e164Number": "+19716989697"
+            },
+            {
+                "e164Number": "+5551999999999"
+            }
+        ]
+    },
+    "event": {
+        "companyId": 1,
+        "eventGroup": "Grupo Evento",
+        "eventType": "Tipo Evento",
+        "source": "Origem",
+        "media": "midia",
+        "comment": "Observação do cliente",
+        "leadInfo": {
+            "Dados do Lead": {
+                "Cidade de atendimento": "fuu bar",
+                "Marca de interesse": true,
+                "Concessionária": true,
+                "Unidade": true,
+                "Deseja fazer test drive": true,
+                "Horário de test drive": true,
+                "Interesse": true
+            }
+        }
+    }
+}
