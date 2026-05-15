@@ -1,3 +1,5 @@
+export const SYONET_LEAD_URL = "https://syonet.gruposervopa.com.br/api/lead/" as const;
+
 const DEFAULT_PHONE_TYPE = "RESIDENCIAL" as const;
 
 export type SyonetPhonePayload =
@@ -77,10 +79,13 @@ export const buildSyonetPhones = (phone: string): SyonetPhonePayload[] => {
 };
 
 export async function submitSyonetLead(payload: SyonetLeadPayload): Promise<void> {
-  const response = await fetch("/api/syonet/lead", {
+  const credentials = btoa("API_DOMATECH:LPServopa@Domatech2026");
+
+  const response = await fetch(SYONET_LEAD_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Basic ${credentials}`,
     },
     body: JSON.stringify(payload),
   });
