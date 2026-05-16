@@ -1,6 +1,7 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
+import { useMutedLoopAutoplay } from "./useMutedLoopAutoplay";
 
 const faqVideoSrc = "/videos/novo_tiguan.mp4";
 const faqCircle = "/images/796130d0d087916b2c6600c0eb200b737e3d839f.svg";
@@ -109,7 +110,9 @@ const faqItems = [
 
 const FaqSection = () => {
   const baseId = useId();
+  const faqVideoRef = useRef<HTMLVideoElement>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  useMutedLoopAutoplay(faqVideoRef);
 
   const toggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? null : index));
@@ -159,12 +162,14 @@ const FaqSection = () => {
 
       <div className="home-faq__right">
         <video
+          ref={faqVideoRef}
           className="home-faq__video"
           src={faqVideoSrc}
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
         />
         <div className="home-faq__visual" aria-hidden>
           <div className="home-faq__label home-faq__label--top">

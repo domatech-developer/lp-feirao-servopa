@@ -38,7 +38,37 @@ export function useSyncedTwinVideos() {
     secondary.pause();
     secondary.currentTime = primary.currentTime;
 
+    const startPrimary = () => {
+      primary.muted = true;
+      primary.defaultMuted = true;
+      const attempt = primary.play();
+      if (attempt) {
+        void attempt.catch(() => {});
+      }
+    };
+
+    startPrimary();
+    primary.addEventListener("loadeddata", startPrimary);
+    primary.addEventListener("canplay", startPrimary);
+
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) startPrimary();
+      },
+      { threshold: 0.12 }
+    );
+    visibilityObserver.observe(primary);
+
+    const onPageVisible = () => {
+      if (document.visibilityState === "visible") startPrimary();
+    };
+    document.addEventListener("visibilitychange", onPageVisible);
+
     return () => {
+      primary.removeEventListener("loadeddata", startPrimary);
+      primary.removeEventListener("canplay", startPrimary);
+      visibilityObserver.disconnect();
+      document.removeEventListener("visibilitychange", onPageVisible);
       primary.removeEventListener("timeupdate", syncSecondary);
       primary.removeEventListener("seeking", onSeeking);
       primary.removeEventListener("seeked", onSeeking);

@@ -19,7 +19,7 @@ const IntroHighlightBridge = () => {
     loop: true,
     muted: true,
     playsInline: true,
-    preload: "metadata" as const,
+    preload: "auto" as const,
   };
 
   return (
