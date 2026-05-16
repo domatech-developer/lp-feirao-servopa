@@ -17,23 +17,23 @@ import HistorySection from "@/screens/Home/modules/HistorySection";
 import FaqSection from "@/screens/Home/modules/FaqSection";
 const Home = () => {
   return (
-    <FeiraoCountdownProvider>
-      <HomeFormModalProvider>
-        <MainDefault id="home">
+    <HomeFormModalProvider>
+      <MainDefault id="home">
+        <FeiraoCountdownProvider>
           <HomeMobileFloatingHeader />
           <HomeStickyBar />
           <HeroSection />
-          <IntroHighlightBridge />
-          <BrandsSection />
-          <CampaignSection />
-          <LegacySection />
-          <HistorySection />
-          <FaqSection />
-          <FooterSection />
-        </MainDefault>
-        <FeiraoFormModal />
-      </HomeFormModalProvider>
-    </FeiraoCountdownProvider>
+        </FeiraoCountdownProvider>
+        <IntroHighlightBridge />
+        <BrandsSection />
+        <CampaignSection />
+        <LegacySection />
+        <HistorySection />
+        <FaqSection />
+        <FooterSection />
+      </MainDefault>
+      <FeiraoFormModal />
+    </HomeFormModalProvider>
   );
 };
 
