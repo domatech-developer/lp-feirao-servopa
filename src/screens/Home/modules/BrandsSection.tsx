@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
 import { useHomeFormModal } from "../HomeFormModalContext";
 
 const selectedBrandLogo = "/images/60a67738f8f949e78b7f2cb8deb87400.webp";
@@ -132,6 +133,7 @@ const toneClassMap: Record<BrandTone, string> = {
 const BrandsSection = () => {
   const { openFeiraoFormModal } = useHomeFormModal();
   const [activeBrand, setActiveBrand] = useState(0);
+  const isMobileLayout = useMediaQuery("(max-width: 900px)");
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -192,10 +194,11 @@ const BrandsSection = () => {
           <button className="home-brands__nav home-brands__nav--left" type="button" aria-label="Anterior" onClick={onPrev}>
             &#8249;
           </button>
-          <div className="home-brands__shield-card" key={currentBrand.shield}>
+          <div
+            className="home-brands__shield-card"
+            {...(!isMobileLayout ? { key: currentBrand.shield } : {})}
+          >
             <img src={currentBrand.shield} alt="" className="home-brands__shield-layer" />
-            
-
           </div>
           <button className="home-brands__nav home-brands__nav--right" type="button" aria-label="Proximo" onClick={onNext}>
             &#8250;
