@@ -10,19 +10,15 @@ const cardFour = "/images/fd55dbc487244409801a07ee97a72a30-campaign-card-4.webp"
 
 const cards = [
   {
-    title: "Test drive com chance de gol",
     image: cardOne,
   },
   {
-    title: "Condições especiais no Feirão",
     image: cardTwo,
   },
   {
-    title: "Atendimento especializado",
     image: cardThree,
   },
   {
-    title: "Grandes marcas ENTRAM EM CAMPO",
     image: cardFour,
   },
 ];
@@ -55,10 +51,9 @@ const CampaignSection = () => {
         <div className="home-campaign__mosaic">
           <div className="home-campaign__cards">
             {cards.map((card) => (
-              <article key={card.title} className="home-campaign__card">
+              <article className="home-campaign__card">
                 <img src={card.image} alt="" className="home-campaign__card-image" />
                 <div className="home-campaign__card-overlay" aria-hidden />
-                <h3 className="home-campaign__card-title">{card.title}</h3>
               </article>
             ))}
           </div>
