@@ -1,5 +1,11 @@
+const path = require("path");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Acesso ao dev via IP da rede (ex.: celular em http://192.168.0.15:3000)
+  allowedDevOrigins: ["192.168.0.15"],
+  // Evita que o Next use o pnpm-lock.yaml em ~/ quando existe outro neste projeto
+  outputFileTracingRoot: path.join(__dirname),
   output: 'standalone',
   reactStrictMode: false,
   experimental: {
