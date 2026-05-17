@@ -15,31 +15,36 @@ const heroSpotlightMask = "/images/31e84058ba064b786875a6e25c656eaf320046b6.svg"
 const heroEllipseL = "/images/a88f7e659f0c93b47be26fc0417d6a6783034307.svg";
 const heroEllipseR = "/images/41149f21a97812159c4a97f400a27feccc7bf415.svg";
 const heroBall = "/images/e2844ba54253a1472bfd421b9191a63d0b6809cb.webp";
+const heroPromoBadge = "/images/1bfa78d186eb2753576470238f528a052d0138d4.webp";
 
 const logoServopa = "/images/4673a74e78345a46f5e60b22edfa6d5b975cc62a.svg";
 
 const spotlightMaskCss = `url("${heroSpotlightMask}")`;
 
 /** Isolado do palco animado: o tick do countdown não deve re-renderizar todo o hero (causa piscar no mobile). */
-const HeroCountdownValues = memo(function HeroCountdownValues() {
+type HeroCountdownValuesProps = {
+  compact?: boolean;
+};
+
+const HeroCountdownValues = memo(function HeroCountdownValues({ compact = false }: HeroCountdownValuesProps) {
   const { days, hours, minutes, seconds } = useFeiraoCountdown();
   return (
-    <div className="home-hero__countdown-values" aria-live="polite">
+    <div className="home-hero__countdown-values" aria-live="polite" suppressHydrationWarning>
       <div>
-        <strong>{days}</strong>
+        <strong suppressHydrationWarning>{days}</strong>
         <span>Dias</span>
       </div>
       <div>
-        <strong>{hours}</strong>
+        <strong suppressHydrationWarning>{hours}</strong>
         <span>Horas</span>
       </div>
       <div>
-        <strong>{minutes}</strong>
-        <span>Minutos</span>
+        <strong suppressHydrationWarning>{minutes}</strong>
+        <span>{compact ? "Min" : "Minutos"}</span>
       </div>
       <div>
-        <strong>{seconds}</strong>
-        <span>Segundos</span>
+        <strong suppressHydrationWarning>{seconds}</strong>
+        <span>{compact ? "Seg" : "Segundos"}</span>
       </div>
     </div>
   );
@@ -161,7 +166,7 @@ const HeroSection = () => {
       </div>
 
       <div className="home-hero__shell">
-        <header className="home-hero__top">
+        <header className="home-hero__top home-hero__top--desktop">
           <div className="home-hero__countdown-card">
             <p id="home-hero-countdown-label" className="home-hero__countdown-title">
               Dias para o Feirão Servopa:
@@ -183,6 +188,34 @@ const HeroSection = () => {
             </button>
           </div>
         </header>
+
+        <div className="home-hero__mobile-ui">
+          <div className="home-hero__mobile-promo">
+            <div
+              className="home-hero__countdown-card home-hero__countdown-card--center"
+              aria-label="Dias para o Feirão Servopa"
+            >
+              <p className="home-hero__countdown-title">Dias para o Feirão Servopa:</p>
+              <HeroCountdownValues />
+            </div>
+
+            <button
+              type="button"
+              className="home-hero__promo-badge"
+              onClick={() => openFeiraoFormModal()}
+              aria-label="Fazendo um test drive: concorra a uma Harley-Davidson"
+            >
+              <img src={heroPromoBadge} alt="" />
+            </button>
+          </div>
+
+          <footer className="home-hero__dock" data-node-id="1341:76627">
+            <HeroCountdownValues compact />
+            <button type="button" className="home-hero__dock-cta" onClick={() => openFeiraoFormModal()}>
+              Formulário de Test Drive
+            </button>
+          </footer>
+        </div>
       </div>
     </section>
   );

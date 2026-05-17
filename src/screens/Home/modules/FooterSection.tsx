@@ -115,7 +115,7 @@ const FooterSection = () => {
   }, [footerCtaStarsReveal]);
 
   return (
-    <footer id="feirao-rodape" className="home-footer">
+    <footer id="feirao-rodape" className="home-footer" data-node-id="1368:78506">
       <div className="home-footer__top">
         <div className="home-footer__brand">
           <img src={servopaLogo} alt="Grupo Servopa" className="home-footer__logo" />
@@ -184,7 +184,8 @@ const FooterSection = () => {
                   <FooterCtaRibbonBadge />
                 </div>
                 <span className="home-footer__cta-ribbon-title">
-                  Escolha sua marca e entre em campo no feirão
+                  <span className="home-footer__cta-ribbon-title-line">Escolha sua marca e</span>
+                  <span className="home-footer__cta-ribbon-title-line">entre em campo no feirão</span>
                 </span>
                 <div className="home-footer__cta-ribbon-gutter home-footer__cta-ribbon-gutter--balance" aria-hidden />
                 </div>
