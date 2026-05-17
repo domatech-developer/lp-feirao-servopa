@@ -4,7 +4,14 @@ import { useEffect, useState } from "react";
 import { useFeiraoCountdown } from "../FeiraoCountdownContext";
 import { useHomeFormModal } from "../HomeFormModalContext";
 
-const SHOW_AFTER_SCROLL_PX = 80;
+const SHOW_AFTER_SCROLL_DESKTOP_PX = 80;
+
+const getShowAfterScrollPx = () => {
+  if (typeof window === "undefined") return SHOW_AFTER_SCROLL_DESKTOP_PX;
+  return window.matchMedia("(max-width: 900px)").matches
+    ? Math.round(window.innerHeight * 0.92)
+    : SHOW_AFTER_SCROLL_DESKTOP_PX;
+};
 const logoServopa = "/images/4673a74e78345a46f5e60b22edfa6d5b975cc62a.svg";
 const heroBadge = "/images/1bfa78d186eb2753576470238f528a052d0138d4.webp";
 
@@ -15,11 +22,16 @@ const HomeStickyBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > SHOW_AFTER_SCROLL_PX);
+      setVisible(window.scrollY > getShowAfterScrollPx());
     };
+    const onResize = () => handleScroll();
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
 
   return (
@@ -45,19 +57,27 @@ const HomeStickyBar = () => {
           aria-live="polite"
         >
           <div className="home-sticky-bar__time-unit">
-            <strong className="home-sticky-bar__time-value">{days}</strong>
+            <strong className="home-sticky-bar__time-value" suppressHydrationWarning>
+              {days}
+            </strong>
             <span className="home-sticky-bar__time-label">Dias</span>
           </div>
           <div className="home-sticky-bar__time-unit">
-            <strong className="home-sticky-bar__time-value">{hours}</strong>
+            <strong className="home-sticky-bar__time-value" suppressHydrationWarning>
+              {hours}
+            </strong>
             <span className="home-sticky-bar__time-label">Horas</span>
           </div>
           <div className="home-sticky-bar__time-unit">
-            <strong className="home-sticky-bar__time-value">{minutes}</strong>
+            <strong className="home-sticky-bar__time-value" suppressHydrationWarning>
+              {minutes}
+            </strong>
             <span className="home-sticky-bar__time-label">Min</span>
           </div>
           <div className="home-sticky-bar__time-unit">
-            <strong className="home-sticky-bar__time-value">{seconds}</strong>
+            <strong className="home-sticky-bar__time-value" suppressHydrationWarning>
+              {seconds}
+            </strong>
             <span className="home-sticky-bar__time-label">Seg</span>
           </div>
         </div>

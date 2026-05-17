@@ -9,8 +9,6 @@ import {
 } from "react";
 import { getFeiraoCountdown, type FeiraoCountdownParts } from "@/lib/feiraoCountdown";
 
-const FeiraoCountdownContext = createContext<FeiraoCountdownParts | null>(null);
-
 const EMPTY_PARTS: FeiraoCountdownParts = {
   days: 0,
   hours: 0,
@@ -18,8 +16,9 @@ const EMPTY_PARTS: FeiraoCountdownParts = {
   seconds: 0,
 };
 
+const FeiraoCountdownContext = createContext<FeiraoCountdownParts | null>(null);
+
 export function FeiraoCountdownProvider({ children }: { children: ReactNode }) {
-  /** Estado estável SSR + 1ª hidratação; valores reais só após montagem no cliente */
   const [parts, setParts] = useState<FeiraoCountdownParts>(EMPTY_PARTS);
 
   useEffect(() => {
