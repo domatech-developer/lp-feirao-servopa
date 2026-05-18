@@ -1,5 +1,7 @@
 "use client";
 
+import { GTM_BUTTON } from "@/constants/gtmButtons";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { useHomeFormModal } from "../HomeFormModalContext";
 import { useSyncedTwinVideos } from "./useSyncedTwinVideos";
 
@@ -54,7 +56,14 @@ const IntroHighlightBridge = () => {
           <button
             type="button"
             className="home-pill-btn home-pill-btn--text-only"
-            onClick={() => openFeiraoFormModal()}
+            data-gtm={GTM_BUTTON.INTRO_QUERO_INSCREVER}
+            onClick={() => {
+              sendGTMEvent({
+                event: `button_clicked_${GTM_BUTTON.INTRO_QUERO_INSCREVER}`,
+                value: GTM_BUTTON.INTRO_QUERO_INSCREVER,
+              });
+              openFeiraoFormModal();
+            }}
           >
             Quero me inscrever
           </button>
@@ -102,7 +111,14 @@ const IntroHighlightBridge = () => {
           <button
             type="button"
             className="home-pill-btn home-pill-btn--text-only home-highlight__cta"
-            onClick={() => openFeiraoFormModal()}
+            data-gtm={GTM_BUTTON.HIGHLIGHT_MARCAR_TEST_DRIVE}
+            onClick={() => {
+              sendGTMEvent({
+                event: `button_clicked_${GTM_BUTTON.HIGHLIGHT_MARCAR_TEST_DRIVE}`,
+                value: GTM_BUTTON.HIGHLIGHT_MARCAR_TEST_DRIVE,
+              });
+              openFeiraoFormModal();
+            }}
           >
             Marcar Test Drive e concorrer!
           </button>

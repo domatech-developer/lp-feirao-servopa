@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 
 import ButtonHamburguer from "@/components/Buttons/ButtonHamburguer/ButtonHamburguer";
+import { GTM_BUTTON } from "@/constants/gtmButtons";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { useHomeFormModal } from "../HomeFormModalContext";
 
 const logoServopa = "/images/4673a74e78345a46f5e60b22edfa6d5b975cc62a.svg";
@@ -47,6 +49,10 @@ const HomeMobileFloatingHeader = () => {
   };
 
   const onForm = () => {
+    sendGTMEvent({
+      event: `button_clicked_${GTM_BUTTON.MOBILE_HEADER_FORMULARIO}`,
+      value: GTM_BUTTON.MOBILE_HEADER_FORMULARIO,
+    });
     openFeiraoFormModal();
     close();
   };
@@ -101,7 +107,12 @@ const HomeMobileFloatingHeader = () => {
             </button>
           </li>
           <li>
-            <button type="button" className="home-mobile-header__link home-mobile-header__link--cta" onClick={onForm}>
+            <button
+              type="button"
+              className="home-mobile-header__link home-mobile-header__link--cta"
+              data-gtm={GTM_BUTTON.MOBILE_HEADER_FORMULARIO}
+              onClick={onForm}
+            >
               Formulário de test drive
             </button>
           </li>

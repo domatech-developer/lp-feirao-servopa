@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { GTM_BUTTON } from "@/constants/gtmButtons";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { useHomeFormModal } from "../HomeFormModalContext";
 
 const servopaLogo = "/images/d7b93205623972d4c639db156b36beaaaf717504.svg";
@@ -130,7 +132,14 @@ const FooterSection = () => {
             type="button"
             className="home-footer__cta-card"
             data-node-id="1313:23173"
-            onClick={() => openFeiraoFormModal()}
+            data-gtm={GTM_BUTTON.FOOTER_ESCOLHA_MARCA}
+            onClick={() => {
+              sendGTMEvent({
+                event: `button_clicked_${GTM_BUTTON.FOOTER_ESCOLHA_MARCA}`,
+                value: GTM_BUTTON.FOOTER_ESCOLHA_MARCA,
+              });
+              openFeiraoFormModal();
+            }}
           >
             <div className="home-footer__cta-bg-layer" aria-hidden="true">
               <div className="home-footer__cta-bg-tint" />

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { GTM_BUTTON } from "@/constants/gtmButtons";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { useFeiraoCountdown } from "../FeiraoCountdownContext";
 import { useHomeFormModal } from "../HomeFormModalContext";
 
@@ -86,7 +88,14 @@ const HomeStickyBar = () => {
           <button
             type="button"
             className="home-sticky-bar__test-drive-btn"
-            onClick={() => openFeiraoFormModal()}
+            data-gtm={GTM_BUTTON.STICKY_FORMULARIO_TEST_DRIVE}
+            onClick={() => {
+              sendGTMEvent({
+                event: `button_clicked_${GTM_BUTTON.STICKY_FORMULARIO_TEST_DRIVE}`,
+                value: GTM_BUTTON.STICKY_FORMULARIO_TEST_DRIVE,
+              });
+              openFeiraoFormModal();
+            }}
           >
             Formulário de Test Drive
           </button>

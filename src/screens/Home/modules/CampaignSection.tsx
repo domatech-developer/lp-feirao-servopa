@@ -1,6 +1,8 @@
 "use client";
 
 import { DotButton, useDotButton } from "@/components/Carousel/CarouselDefault/components/CarouselDotButton";
+import { GTM_BUTTON } from "@/constants/gtmButtons";
+import { sendGTMEvent } from "@next/third-parties/google";
 import useEmblaCarousel from "embla-carousel-react";
 import { useHomeFormModal } from "../HomeFormModalContext";
 
@@ -97,7 +99,14 @@ const CampaignSection = () => {
             <button
               type="button"
               className="home-pill-btn home-pill-btn--campaign-cta"
-              onClick={() => openFeiraoFormModal()}
+              data-gtm={GTM_BUTTON.CAMPAIGN_QUERO_INSCREVER}
+              onClick={() => {
+                sendGTMEvent({
+                  event: `button_clicked_${GTM_BUTTON.CAMPAIGN_QUERO_INSCREVER}`,
+                  value: GTM_BUTTON.CAMPAIGN_QUERO_INSCREVER,
+                });
+                openFeiraoFormModal();
+              }}
             >
               Quero me inscrever
             </button>

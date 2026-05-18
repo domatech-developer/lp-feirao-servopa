@@ -2,6 +2,8 @@
 
 import type { CSSProperties } from "react";
 import { memo } from "react";
+import { GTM_BUTTON } from "@/constants/gtmButtons";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { useFeiraoCountdown } from "../FeiraoCountdownContext";
 import { useHomeFormModal } from "../HomeFormModalContext";
 
@@ -182,7 +184,14 @@ const HeroSection = () => {
             <button
               type="button"
               className="home-pill-btn home-pill-btn--hero-cta"
-              onClick={() => openFeiraoFormModal()}
+              data-gtm={GTM_BUTTON.HERO_FORMULARIO_TEST_DRIVE}
+              onClick={() => {
+                sendGTMEvent({
+                  event: `button_clicked_${GTM_BUTTON.HERO_FORMULARIO_TEST_DRIVE}`,
+                  value: GTM_BUTTON.HERO_FORMULARIO_TEST_DRIVE,
+                });
+                openFeiraoFormModal();
+              }}
             >
               Formulário de Test Drive
             </button>
@@ -202,7 +211,14 @@ const HeroSection = () => {
             <button
               type="button"
               className="home-hero__promo-badge"
-              onClick={() => openFeiraoFormModal()}
+              data-gtm={GTM_BUTTON.HERO_PROMO_BADGE}
+              onClick={() => {
+                sendGTMEvent({
+                  event: `button_clicked_${GTM_BUTTON.HERO_PROMO_BADGE}`,
+                  value: GTM_BUTTON.HERO_PROMO_BADGE,
+                });
+                openFeiraoFormModal();
+              }}
               aria-label="Fazendo um test drive: concorra a uma Harley-Davidson"
             >
               <img src={heroPromoBadge} alt="" />
@@ -211,7 +227,18 @@ const HeroSection = () => {
 
           <footer className="home-hero__dock" data-node-id="1341:76627">
             <HeroCountdownValues compact />
-            <button type="button" className="home-hero__dock-cta" onClick={() => openFeiraoFormModal()}>
+            <button
+              type="button"
+              className="home-hero__dock-cta"
+              data-gtm={GTM_BUTTON.HERO_DOCK_FORMULARIO}
+              onClick={() => {
+                sendGTMEvent({
+                  event: `button_clicked_${GTM_BUTTON.HERO_DOCK_FORMULARIO}`,
+                  value: GTM_BUTTON.HERO_DOCK_FORMULARIO,
+                });
+                openFeiraoFormModal();
+              }}
+            >
               Formulário de Test Drive
             </button>
           </footer>

@@ -7,6 +7,8 @@ import {
   getDealersForCityMarca,
   getMarcasForCity,
 } from "@/lib/feiraoFormLocations";
+import { GTM_BUTTON } from "@/constants/gtmButtons";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { buildSyonetPhones, submitSyonetLead } from "@/lib/syonetLead";
 import { useHomeFormModal } from "../HomeFormModalContext";
 import "./FeiraoFormModal.scss";
@@ -169,6 +171,11 @@ export default function FeiraoFormModal() {
     e.preventDefault();
 
     if (!aceitePrivacidade || !showSummary) return;
+
+    sendGTMEvent({
+      event: "button_clicked_garantir_proposta",
+      value: "garantir_proposta",
+    });
 
     setIsSubmitting(true);
     setSubmitError(null);
@@ -484,7 +491,12 @@ export default function FeiraoFormModal() {
                 </div>
               )}
 
-              <button type="submit" className="feirao-form__submit" disabled={!canSubmit}>
+              <button
+                type="submit"
+                className="feirao-form__submit"
+                data-gtm={GTM_BUTTON.GARANTIR_PROPOSTA}
+                disabled={!canSubmit}
+              >
                 {isSubmitting ? "Enviando..." : "Enviar"}
               </button>
             </form>

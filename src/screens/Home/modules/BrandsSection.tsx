@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { GTM_BUTTON } from "@/constants/gtmButtons";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { useHomeFormModal } from "../HomeFormModalContext";
 
 const selectedBrandLogo = "/images/60a67738f8f949e78b7f2cb8deb87400.webp";
@@ -264,7 +266,18 @@ const BrandsSection = () => {
             <button className="home-brands__nav home-brands__nav--left" type="button" aria-label="Anterior" onClick={onPrev}>
               <span className="home-brands__nav-icon home-brands__nav-icon--left" aria-hidden />
             </button>
-            <button type="button" className="home-brands__cta" onClick={() => openFeiraoFormModal()}>
+            <button
+              type="button"
+              className="home-brands__cta"
+              data-gtm={GTM_BUTTON.BRANDS_ENCONTRAR_CONCESSIONARIA}
+              onClick={() => {
+                sendGTMEvent({
+                  event: `button_clicked_${GTM_BUTTON.BRANDS_ENCONTRAR_CONCESSIONARIA}`,
+                  value: GTM_BUTTON.BRANDS_ENCONTRAR_CONCESSIONARIA,
+                });
+                openFeiraoFormModal();
+              }}
+            >
               <span>Encontrar concessionária</span>
               <span className="home-brands__cta-arrow" aria-hidden />
             </button>
