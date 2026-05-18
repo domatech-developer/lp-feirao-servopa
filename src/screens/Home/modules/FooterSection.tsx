@@ -193,8 +193,8 @@ const FooterSection = () => {
                   <FooterCtaRibbonBadge />
                 </div>
                 <span className="home-footer__cta-ribbon-title">
-                  <span className="home-footer__cta-ribbon-title-line">Escolha sua marca e</span>
-                  <span className="home-footer__cta-ribbon-title-line">entre em campo no feirão</span>
+                  <span className="home-footer__cta-ribbon-title-line">Escolha sua marca e </span>
+                  <span className="home-footer__cta-ribbon-title-line">&nbsp;entre em campo no feirão</span>
                 </span>
                 <div className="home-footer__cta-ribbon-gutter home-footer__cta-ribbon-gutter--balance" aria-hidden />
                 </div>
