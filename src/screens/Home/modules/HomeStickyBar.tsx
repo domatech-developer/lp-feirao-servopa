@@ -52,7 +52,7 @@ const HomeStickyBar = () => {
           <img src={logoServopa} alt="Grupo Servopa" className="home-sticky-bar__servopa-logo" />
         </div>
 
-        <div
+        {/* <div
           className="home-sticky-bar__countdown"
           role="region"
           aria-label="Tempo restante até o Feirão Servopa em dias, horas, minutos e segundos"
@@ -82,7 +82,7 @@ const HomeStickyBar = () => {
             </strong>
             <span className="home-sticky-bar__time-label">Seg</span>
           </div>
-        </div>
+        </div> */}
 
         <div className="home-sticky-bar__cta">
           <button

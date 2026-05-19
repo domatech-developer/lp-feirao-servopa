@@ -169,12 +169,13 @@ const HeroSection = () => {
 
       <div className="home-hero__shell">
         <header className="home-hero__top home-hero__top--desktop">
-          <div className="home-hero__countdown-card">
+          {/* <div className="home-hero__countdown-card">
             <p id="home-hero-countdown-label" className="home-hero__countdown-title">
               Dias para o Feirão Servopa:
             </p>
             <HeroCountdownValues />
-          </div>
+          </div> */}
+          <div></div>
 
           <div className="home-hero__top-logo">
             <img src={logoServopa} alt="Grupo Servopa" className="home-hero__top-logo-image" />
@@ -200,13 +201,13 @@ const HeroSection = () => {
 
         <div className="home-hero__mobile-ui">
           <div className="home-hero__mobile-promo">
-            <div
+            {/* <div
               className="home-hero__countdown-card home-hero__countdown-card--center"
               aria-label="Dias para o Feirão Servopa"
             >
               <p className="home-hero__countdown-title">Dias para o Feirão Servopa:</p>
               <HeroCountdownValues />
-            </div>
+            </div> */}
 
             <button
               type="button"
@@ -226,7 +227,8 @@ const HeroSection = () => {
           </div>
 
           <footer className="home-hero__dock" data-node-id="1341:76627">
-            <HeroCountdownValues compact />
+            {/* <HeroCountdownValues compact /> */}
+            <div></div>
             <button
               type="button"
               className="home-hero__dock-cta"
