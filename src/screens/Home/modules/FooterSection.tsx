@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { GTM_BUTTON } from "@/constants/gtmButtons";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { useHomeFormModal } from "../HomeFormModalContext";
+import Link from "next/link";
 
 const servopaLogo = "/images/d7b93205623972d4c639db156b36beaaaf717504.svg";
 const footerCardBg = "/images/82ae1ce451dd66d07090abc04aea64d4f90c17eb.webp";
@@ -157,67 +158,69 @@ const FooterSection = () => {
             <div className="home-footer__cta-stack">
               <div className="home-footer__cta-ribbon">
                 <div className="home-footer__cta-ribbon-visual" aria-hidden="true">
-                <svg
-                  className="home-footer__cta-ribbon-svg"
-                  viewBox="0 0 658 72"
-                  preserveAspectRatio="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <linearGradient id="homeFooterRibbonFill" x1="329" y1="10" x2="329" y2="62" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#00c45f" />
-                      <stop offset="1" stopColor="#008a46" />
-                    </linearGradient>
-                    <linearGradient id="homeFooterRibbonStroke" x1="0" y1="36" x2="658" y2="36" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#ffe566" />
-                      <stop offset="0.5" stopColor="#f6c316" />
-                      <stop offset="1" stopColor="#e6a800" />
-                    </linearGradient>
-                    <filter id="homeFooterRibbonShadow" x="-6%" y="-30%" width="112%" height="160%">
-                      <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#000" floodOpacity="0.38" />
-                    </filter>
-                  </defs>
-                  <g filter="url(#homeFooterRibbonShadow)">
-                    <polygon
-                      points="0,36 22,5 636,5 658,36 636,67 22,67"
-                      fill="url(#homeFooterRibbonFill)"
-                      stroke="url(#homeFooterRibbonStroke)"
-                      strokeWidth="2.25"
-                      strokeLinejoin="miter"
-                    />
-                  </g>
-                </svg>
+                  <svg
+                    className="home-footer__cta-ribbon-svg"
+                    viewBox="0 0 658 72"
+                    preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <linearGradient id="homeFooterRibbonFill" x1="329" y1="10" x2="329" y2="62" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#00c45f" />
+                        <stop offset="1" stopColor="#008a46" />
+                      </linearGradient>
+                      <linearGradient id="homeFooterRibbonStroke" x1="0" y1="36" x2="658" y2="36" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#ffe566" />
+                        <stop offset="0.5" stopColor="#f6c316" />
+                        <stop offset="1" stopColor="#e6a800" />
+                      </linearGradient>
+                      <filter id="homeFooterRibbonShadow" x="-6%" y="-30%" width="112%" height="160%">
+                        <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#000" floodOpacity="0.38" />
+                      </filter>
+                    </defs>
+                    <g filter="url(#homeFooterRibbonShadow)">
+                      <polygon
+                        points="0,36 22,5 636,5 658,36 636,67 22,67"
+                        fill="url(#homeFooterRibbonFill)"
+                        stroke="url(#homeFooterRibbonStroke)"
+                        strokeWidth="2.25"
+                        strokeLinejoin="miter"
+                      />
+                    </g>
+                  </svg>
                 </div>
                 <div className="home-footer__cta-ribbon-row">
-                <div className="home-footer__cta-ribbon-gutter">
-                  <FooterCtaRibbonBadge />
-                </div>
-                <span className="home-footer__cta-ribbon-title">
-                  <span className="home-footer__cta-ribbon-title-line">Escolha sua marca e </span>
-                  <span className="home-footer__cta-ribbon-title-line">&nbsp;entre em campo no feirão</span>
-                </span>
-                <div className="home-footer__cta-ribbon-gutter home-footer__cta-ribbon-gutter--balance" aria-hidden />
+                  <div className="home-footer__cta-ribbon-gutter">
+                    <FooterCtaRibbonBadge />
+                  </div>
+                  <span className="home-footer__cta-ribbon-title">
+                    <span className="home-footer__cta-ribbon-title-line">Escolha sua marca e </span>
+                    <span className="home-footer__cta-ribbon-title-line">&nbsp;entre em campo no feirão</span>
+                  </span>
+                  <div className="home-footer__cta-ribbon-gutter home-footer__cta-ribbon-gutter--balance" aria-hidden />
                 </div>
               </div>
 
               <div className="home-footer__cta-copy">
-              <span className="home-footer__cta-copy-lead">
-                Selecione a marca de interesse e, em seguida, escolha a concessionária participante
-                mais conveniente para o seu atendimento.
-              </span>
-              <span className="home-footer__cta-link">
-                <span>Escolha sua marca</span>
-                <span className="home-footer__cta-arrow" aria-hidden />
-              </span>
+                <span className="home-footer__cta-copy-lead">
+                  Selecione a marca de interesse e, em seguida, escolha a concessionária participante
+                  mais conveniente para o seu atendimento.
+                </span>
+                <span className="home-footer__cta-link">
+                  <span>Escolha sua marca</span>
+                  <span className="home-footer__cta-arrow" aria-hidden />
+                </span>
               </div>
             </div>
           </button>
         </div>
 
         <nav className="home-footer__links" aria-label="Links do rodapé">
-          <button type="button" className="home-footer__text-link">
-            Regulamento
-          </button>
+          <Link href="/docs/regulamento.docx" target="_blank" download>
+            <button type="button" className="home-footer__text-link">
+              Regulamento
+            </button>
+          </Link>
           <button type="button" className="home-footer__text-link">
             Política de Privacidade
           </button>
@@ -231,9 +234,11 @@ const FooterSection = () => {
         <div className="home-footer__legal-inner">
           <p className="home-footer__legal-block">
             <span>Promoção válida conforme </span>
-            <button type="button" className="home-footer__legal-term">
-              regulamento
-            </button>
+            <Link href="/docs/regulamento.docx" target="_blank" download>
+              <button type="button" className="home-footer__legal-term">
+                regulamento
+              </button>
+            </Link>
             <span>
               . Imagens meramente ilustrativas. Condições, modelos, brindes, unidades participantes
               e disponibilidade de veículos sujeitos às regras da campanha.

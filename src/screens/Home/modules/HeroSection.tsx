@@ -11,7 +11,7 @@ import { useHomeFormModal } from "../HomeFormModalContext";
 const heroBg = "/images/632d51ff85c8ed6c1bdbb0919f75ba3978979823.webp";
 const heroLights = "/images/9f2a548355039383ccd5426d07e4cc97604dec46.webp";
 const heroLogoCenter = "/images/f56571d554c8c63415e1603fb811f912b24edf97.webp";
-const heroCarsPack = "/images/e8b2d53eaed42b1e9bce76b3f93d8296bc04e4e5.webp";
+const heroCarsPack = "/images/d0e977418d3ced0be18c8464af0d6d72ccdec79c.webp";
 const heroSpotlight = "/images/e17fa784dbf32b090e821215ec40ab4db0102926.webp";
 const heroSpotlightMask = "/images/31e84058ba064b786875a6e25c656eaf320046b6.svg";
 const heroEllipseL = "/images/a88f7e659f0c93b47be26fc0417d6a6783034307.svg";

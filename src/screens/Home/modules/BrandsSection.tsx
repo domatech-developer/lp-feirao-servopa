@@ -136,20 +136,20 @@ const BrandsSection = () => {
       setActiveBrand((prev) => (prev + 1) % brands.length);
     };
 
-    let timer = window.setInterval(advance, BRAND_ROTATE_MS);
+    // let timer = window.setInterval(advance, BRAND_ROTATE_MS);
 
-    const onVisibility = () => {
-      window.clearInterval(timer);
-      if (document.visibilityState === "visible") {
-        timer = window.setInterval(advance, BRAND_ROTATE_MS);
-      }
-    };
+    // const onVisibility = () => {
+    //   window.clearInterval(timer);
+    //   if (document.visibilityState === "visible") {
+    //     timer = window.setInterval(advance, BRAND_ROTATE_MS);
+    //   }
+    // };
 
-    document.addEventListener("visibilitychange", onVisibility);
-    return () => {
-      window.clearInterval(timer);
-      document.removeEventListener("visibilitychange", onVisibility);
-    };
+    // document.addEventListener("visibilitychange", onVisibility);
+    // return () => {
+    //   window.clearInterval(timer);
+    //   document.removeEventListener("visibilitychange", onVisibility);
+    // };
   }, []);
 
   useEffect(() => {
@@ -194,10 +194,10 @@ const BrandsSection = () => {
             <span className="home-brands__title-line">Grandes marcas reunidas</span>
             <span className="home-brands__title-line">em um só Feirão</span>
           </h2>
-            <p>
-              Do carro zero ao seminovo, o Feirão reúne diferentes possibilidades para cada momento da sua
-              vida.
-            </p>
+          <p>
+            Do carro zero ao seminovo, o Feirão reúne diferentes possibilidades para cada momento da sua
+            vida.
+          </p>
 
           <div ref={brandsGridRef} className="home-brands__grid">
             {brands.map((brand, index) => (
