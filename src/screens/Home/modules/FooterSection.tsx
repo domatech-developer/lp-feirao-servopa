@@ -216,7 +216,7 @@ const FooterSection = () => {
         </div>
 
         <nav className="home-footer__links" aria-label="Links do rodapé">
-          <Link href="/docs/regulamento.docx" target="_blank" download>
+          <Link href="/docs/regulamento-oficial.pdf" target="_blank" download>
             <button type="button" className="home-footer__text-link">
               Regulamento
             </button>
@@ -234,7 +234,7 @@ const FooterSection = () => {
         <div className="home-footer__legal-inner">
           <p className="home-footer__legal-block">
             <span>Promoção válida conforme </span>
-            <Link href="/docs/regulamento.docx" target="_blank" download>
+            <Link href="/docs/regulamento-oficial.pdf" target="_blank" download>
               <button type="button" className="home-footer__legal-term">
                 regulamento
               </button>
