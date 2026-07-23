@@ -13,6 +13,10 @@ NEXT_PUBLIC_DEFAULT_LOCALE=""
 NEXT_PUBLIC_OTHER_LOCALES="pt-br, en, it, en-gb"
 # NEXT_PUBLIC_GOOGLE_VERIFICATION=9PHjzhkcwvr2aU0CgPwOibvA_hEwZKghkib8BokKv8M
 # NEXT_PUBLIC_GOOGLE_ANALYTICS=GTM-56QR64Q
+
+# Syonet (somente servidor — usadas em /api/syonet-lead)
+SYONET_API_USER=
+SYONET_API_PASSWORD=
 ```
 
 <ul>
